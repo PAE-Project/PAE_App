@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.myapplication">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:usesCleartextTraffic="true"
+        android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        tools:targetApi="31"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <meta-data android:name="com.kakao.sdk.AppKey" android:value="AV4A36DcA2EO/8A2IXQSts7NwsU="/>
+        <activity
+            android:name=".main_1004_1005"
+            android:theme="@style/SplashTheme"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".login_0001" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".login_0002" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".login_0003" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".login_0004" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".login_0006" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".login_0007" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".login_0008" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_1001" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_1004" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_1006" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_1007" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_1008" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_1009" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_3001_3002_3003" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_3001" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_3002" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_3003" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+    </application>
+
+</manifest>

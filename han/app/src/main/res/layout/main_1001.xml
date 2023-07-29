@@ -1,0 +1,44 @@
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main_1001"
+    android:id="@+id/drawer_layout">
+
+    <RelativeLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.NavigationDrawer">
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <EditText
+            android:id="@+id/edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/memo_border"
+            android:padding="10dp"
+            android:layout_below="@id/toolbar"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColorHint="#C0C0C0"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="안녕하세요 무엇이 필요하신가요?" />
+
+    </RelativeLayout>
+
+    <FrameLayout android:id="@+id/content_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <include layout="@layout/main_1001_nav"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="370dp"
+        android:layout_height="534dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.329"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="회원가입"
+            android:textColor="#000000"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="106dp"
+            tools:layout_editor_absoluteY="103dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_margin="5dp"
+            android:text="이메일"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="90dp" />
+
+        <EditText
+            android:id="@+id/email_0003"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/memo_border"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="test@test.com"
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:textColorHint="#C0C0C0"
+            tools:layout_editor_absoluteY="109dp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="비밀번호"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            tools:layout_editor_absoluteX="58dp"
+            tools:layout_editor_absoluteY="267dp" />
+
+        <EditText
+            android:id="@+id/password_0003"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/memo_border"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="영문+숫자+특수문자 포함 8자 이상"
+            android:textColor="#000000"
+            android:password="true"
+            android:padding="10dp"
+            android:textColorHint="#C0C0C0"
+            tools:layout_editor_absoluteX="42dp"
+            tools:layout_editor_absoluteY="330dp" />
+
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="비밀번호 확인"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            tools:layout_editor_absoluteX="58dp"
+            tools:layout_editor_absoluteY="267dp" />
+
+        <EditText
+            android:id="@+id/passwordCheck_0003"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/memo_border"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="영문+숫자+특수문자 포함 8자 이상"
+            android:textColor="#000000"
+            android:password="true"
+            android:padding="10dp"
+            android:textColorHint="#C0C0C0"
+            tools:layout_editor_absoluteX="42dp"
+            tools:layout_editor_absoluteY="330dp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/go_0004"
+        android:layout_width="370dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_yellow"
+        android:text="다음"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.578"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.934" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
