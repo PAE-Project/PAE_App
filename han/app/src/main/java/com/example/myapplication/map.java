@@ -1,43 +1,73 @@
 package com.example.myapplication;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.graphics.Color;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import net.daum.mf.map.api.CalloutBalloonAdapter;
+import net.daum.mf.map.api.CameraUpdateFactory;
+import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
+import net.daum.mf.map.api.MapPointBounds;
+import net.daum.mf.map.api.MapPolyline;
 import net.daum.mf.map.api.MapView;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class map extends AppCompatActivity implements MapView.CurrentLocationEventListener, MapView.MapViewEventListener {
     private MapView mapView;
-    private ViewGroup mapViewContainer;
+    private RelativeLayout mapViewContainer;
+
+    class CustomCalloutBalloonAdapter implements CalloutBalloonAdapter {
+        private final View mCalloutBalloon;
+
+        public CustomCalloutBalloonAdapter() {
+            mCalloutBalloon = getLayoutInflater().inflate(R.layout.balloon_layout, null);
+        }
+
+        @Override
+        public View getCalloutBalloon(MapPOIItem poiItem) {
+            ((ImageView) mCalloutBalloon.findViewById(R.id.image)).setImageResource(R.drawable.ic_launcher_foreground);
+            ((TextView) mCalloutBalloon.findViewById(R.id.ball_tv_name)).setText(poiItem.getItemName());
+            ((TextView) mCalloutBalloon.findViewById(R.id.ball_tv_address)).setText("Custom CalloutBalloon");
+            ((TextView) mCalloutBalloon.findViewById(R.id.click)).setText("Custom CalloutBalloon");
+            return mCalloutBalloon;
+        }
+
+        @Override
+        public View getPressedCalloutBalloon(MapPOIItem poiItem) {
+            return null;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map);
 
-        try {
-            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
-            for (Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                Log.d("키해시는 :", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
 
         // 권한ID를 가져옵니다
         int permission = ContextCompat.checkSelfPermission(this,
@@ -64,10 +94,28 @@ public class map extends AppCompatActivity implements MapView.CurrentLocationEve
         //지도를 띄우자
         // java code
         mapView = new MapView(this);
-        mapViewContainer = (ViewGroup) findViewById(R.id.map_view);
+
+        mapViewContainer = (RelativeLayout) findViewById(R.id.map_view);
         mapViewContainer.addView(mapView);
+
         mapView.setMapViewEventListener(this);
         mapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
+
+        mapView.setZoomLevel(1, true);
+        mapView.zoomIn(true);
+        mapView.zoomOut(true);
+
+        //mapView.setCalloutBalloonAdapter(new CustomCalloutBalloonAdapter());
+
+        MapPoint MARKER_POINT = MapPoint.mapPointWithGeoCoord(37.293698, 127.121250);
+        MapPOIItem marker = new MapPOIItem();
+        marker.setItemName("test");
+        marker.setTag(0);
+        marker.setMapPoint(MARKER_POINT);
+        marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
+        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin);
+        mapView.addPOIItem(marker);
+
 
     }
 
@@ -93,6 +141,8 @@ public class map extends AppCompatActivity implements MapView.CurrentLocationEve
             }
         }
     }
+
+
     @Override
     public void onCurrentLocationUpdate(MapView mapView, MapPoint mapPoint, float v) {
 

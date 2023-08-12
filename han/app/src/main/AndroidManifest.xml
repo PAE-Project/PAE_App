@@ -17,9 +17,11 @@
         android:supportsRtl="true"
         tools:targetApi="31"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <meta-data android:name="com.kakao.sdk.AppKey" android:value="AV4A36DcA2EO/8A2IXQSts7NwsU="/>
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="0b2539b30e6cb5c4078f792ce1d3e06b"/>
         <activity
-            android:name=".main_1004_1005"
+            android:name=".splash_00"
             android:theme="@style/SplashTheme"
             android:exported="true">
             <intent-filter>
@@ -34,16 +36,20 @@
         <activity android:name=".login_0006" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".login_0007" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".login_0008" android:theme="@style/Theme.AppCompat.NoActionBar"/>
-        <activity android:name=".main_1001" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_1001" />
         <activity android:name=".main_1004" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_1004_1005" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_1005" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".main_1006" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".main_1007" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_1007_1008_1009" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".main_1008" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".main_1009" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".main_3001_3002_3003" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".main_3001" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".main_3002" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".main_3003" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".map" android:theme="@style/Theme.AppCompat.NoActionBar"/>
     </application>
 
 </manifest>
