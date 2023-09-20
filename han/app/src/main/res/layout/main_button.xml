@@ -68,7 +68,7 @@
         </LinearLayout>
 
     <Button
-        android:id="@+id/btn5"
+        android:id="@+id/go_board"
         android:layout_width="match_parent"
         android:background="@drawable/mbtn5"
         android:layout_height="120dp"

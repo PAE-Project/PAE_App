@@ -86,9 +86,6 @@ public class login_0004 extends AppCompatActivity {
         String email = getIntent.getStringExtra("email");
         boolean helper = getIntent.getBooleanExtra("helper",false);
 
-        System.out.println(pw+" "+email+" "+helper);
-
-
         cl = new View.OnClickListener() {
             @Override
             public void onClick(View v) {

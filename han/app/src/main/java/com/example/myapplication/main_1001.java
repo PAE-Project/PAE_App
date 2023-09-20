@@ -28,7 +28,7 @@ import com.google.android.material.navigation.NavigationView;
 public class main_1001 extends AppCompatActivity {
     TextView go_1004_1005, go_1007_1008_1009;
     Toolbar toolbar;
-    Button go_3001_3002_3003, go_map;
+    Button go_3001_3002_3003, go_map, go_board;
     View.OnClickListener cl;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -43,6 +43,7 @@ public class main_1001 extends AppCompatActivity {
         inflater.inflate(R.layout.main_button,contentFrame,true); // 3. (넣을 xml 파일명, 기반 layout 객체, true)
         go_3001_3002_3003 = (Button) findViewById(R.id.go_3001_3002_3003);
         go_map = (Button) findViewById(R.id.go_map);
+        go_board = (Button) findViewById(R.id.go_board);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         nav = findViewById(R.id.navigation_view);
 
@@ -90,10 +91,15 @@ public class main_1001 extends AppCompatActivity {
                         intent = new Intent(getApplicationContext(), map.class);
                         startActivity(intent);
                         break;
+                    case R.id.go_board:
+                        intent = new Intent(getApplicationContext(), main_7001.class);
+                        startActivity(intent);
+                        break;
                 }
             }
         };
         go_3001_3002_3003.setOnClickListener(cl);
+        go_board.setOnClickListener(cl);
         go_map.setOnClickListener(cl);
     }
 

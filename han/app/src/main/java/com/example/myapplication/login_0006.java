@@ -45,7 +45,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 public class login_0006 extends AppCompatActivity {
-    TextView go_0002, go_0007, go_0008, test;
+    TextView go_0002, go_0007, go_0008;
     Button go_1001;
     public EditText edit_email, edit_password;
     public static String email, pw, result = "false";
@@ -58,7 +58,6 @@ public class login_0006 extends AppCompatActivity {
         go_0008 = (TextView) findViewById(R.id.femail);
         go_0007 = (TextView) findViewById(R.id.fpassword);
         go_1001 = (Button) findViewById(R.id.go_1001);
-        test = (TextView) findViewById(R.id.test);
         edit_email = (EditText) findViewById(R.id.email_0006);
         edit_password = (EditText) findViewById(R.id.password_0006);
 
@@ -97,30 +96,33 @@ public class login_0006 extends AppCompatActivity {
                                     BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
 
                                     // 출력물의 라인과 그 합에 대한 변수.
+                                    StringBuilder result = new StringBuilder();
                                     String line;
-                                    String page = "";
 
-                                    // 라인을 받아와 합친다.
-                                    while ((line = reader.readLine()) != null){
-                                        page += line;
+
+                                    while ((line = reader.readLine()) != null) {
+                                        result.append(line);
                                     }
-                                    result = page;
 
-                                }
-                                catch (Exception e) {
+                                    // 서버 응답을 처리한 후에 UI 업데이트를 수행합니다.
+                                    final String loginResult = result.toString();
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            if(loginResult.equals("true")){
+                                                Intent intent = new Intent(getApplicationContext(), main_1001.class);
+                                                startActivity(intent);
+                                            } else {
+                                                Toast toast = Toast.makeText(getApplicationContext(), "로그인 실패.", Toast.LENGTH_SHORT);
+                                                toast.show();
+                                            }
+                                        }
+                                    });
+                                } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                             }
                         }.start();
-                        test.setText(result);
-                        if(result.equals("true")){
-                            intent = new Intent(getApplicationContext(), main_1001.class);
-                            startActivity(intent);
-                        }
-                        else{
-                            Toast toast = Toast.makeText(getApplicationContext(), "로그인 실패.",Toast.LENGTH_SHORT);
-                            toast.show();
-                        }
                         break;
                 }
             }

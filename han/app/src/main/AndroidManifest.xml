@@ -53,6 +53,13 @@
         <activity android:name=".main_3001" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".main_3002" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".main_3003" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_7001" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_7001_1" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_7001_2" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_7001_3" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_7001_4" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".RegisterActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".DetailActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".map" android:theme="@style/Theme.AppCompat.NoActionBar"/>
     </application>
 
