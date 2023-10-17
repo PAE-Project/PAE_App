@@ -21,7 +21,7 @@ public class splash_00 extends AppCompatActivity {
             public void run()
             {
                 //new Intent(현재 context, 이동할 activity)
-                Intent intent = new Intent(getApplicationContext(), login_0001.class);
+                Intent intent = new Intent(getApplicationContext(), login_start.class);
 
                 startActivity(intent);	//intent 에 명시된 액티비티로 이동
 

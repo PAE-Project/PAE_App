@@ -2,14 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/go_1004_1005"
-        android:title="내 게시물/나눔 정보 확인" />
+        android:id="@+id/change_pw"
+        android:title="비밀번호 수정" />
     <item
-        android:id="@+id/go_1007_1008_1009"
+        android:id="@+id/change_info"
         android:title="회원정보 수정" />
-    <item
-        android:id="@+id/item_setting"
-        android:title="서비스 소개" />
     <item
         android:id="@+id/item_notice"
         android:title="이용안내" />

@@ -1,0 +1,107 @@
+package com.example.myapplication;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.time.LocalDate;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+public class main_update_pw extends AppCompatActivity {
+    EditText pw, pw_ch;
+    String email_data;
+    View.OnClickListener cl;
+    Button check, home;
+    private OkHttpClient client = new OkHttpClient();
+    public JSONObject userdata = new JSONObject();
+    private MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main_update_pw);
+        pw = (EditText) findViewById(R.id.pw);
+        pw_ch = (EditText) findViewById(R.id.pw_ch);
+        home = (Button) findViewById(R.id.home);
+
+        Intent secondIntent = getIntent();
+        email_data = secondIntent.getStringExtra("이메일");
+        cl = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                switch (v.getId()){
+                    case R.id.home:
+                        LocalDate date = null;
+                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                            date = LocalDate.now();
+                        }
+                        try {
+                            userdata.put("pw",pw.getText().toString());
+                            userdata.put("update_at",date);
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                        // RequestBody 생성
+                        RequestBody body = RequestBody.create(userdata.toString(), JSON);
+
+                        // Request 생성
+                        Request request = new Request.Builder()
+                                .url("http://3.35.45.245:8080/api/user/email/"+email_data)
+                                .put(body)
+                                .build();
+
+                        // 비동기 방식으로 요청 전송
+                        client.newCall(request).enqueue(new Callback() {
+                            @Override
+                            public void onFailure(Call call, IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            @Override
+                            public void onResponse(Call call, Response response) throws IOException {
+                                if (!response.isSuccessful()) {
+                                    throw new IOException("Unexpected code " + response);
+                                }
+
+                                // 수신된 JSON 데이터 디버그 로그로 출력
+                                try {
+                                    String responseData = response.body().string();
+                                    JSONObject receivedJson = new JSONObject(responseData);
+                                    Log.d("Received JSON", receivedJson.toString());
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                        Toast toast = Toast.makeText(getApplicationContext(), "변경완료", Toast.LENGTH_LONG);
+                        toast.show();
+                        Intent intent = new Intent(getApplicationContext(), main_screen1.class);
+                        startActivity(intent);
+                        break;
+
+                }
+
+            }
+        };
+        home.setOnClickListener(cl);
+
+    }
+}

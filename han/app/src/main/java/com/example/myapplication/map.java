@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -17,10 +18,13 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -34,39 +38,45 @@ import net.daum.mf.map.api.MapPointBounds;
 import net.daum.mf.map.api.MapPolyline;
 import net.daum.mf.map.api.MapView;
 
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class map extends AppCompatActivity implements MapView.CurrentLocationEventListener, MapView.MapViewEventListener {
     private MapView mapView;
     private RelativeLayout mapViewContainer;
+    View.OnClickListener cl;
+    Button go_helplist;
+    Double location_x, location_y;
 
-    class CustomCalloutBalloonAdapter implements CalloutBalloonAdapter {
-        private final View mCalloutBalloon;
 
-        public CustomCalloutBalloonAdapter() {
-            mCalloutBalloon = getLayoutInflater().inflate(R.layout.balloon_layout, null);
-        }
-
-        @Override
-        public View getCalloutBalloon(MapPOIItem poiItem) {
-            ((ImageView) mCalloutBalloon.findViewById(R.id.image)).setImageResource(R.drawable.ic_launcher_foreground);
-            ((TextView) mCalloutBalloon.findViewById(R.id.ball_tv_name)).setText(poiItem.getItemName());
-            ((TextView) mCalloutBalloon.findViewById(R.id.ball_tv_address)).setText("Custom CalloutBalloon");
-            ((TextView) mCalloutBalloon.findViewById(R.id.click)).setText("Custom CalloutBalloon");
-            return mCalloutBalloon;
-        }
-
-        @Override
-        public View getPressedCalloutBalloon(MapPOIItem poiItem) {
-            return null;
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map);
+
+        connect con = new connect();
+        con.start();
+
+
+        go_helplist = (Button) findViewById(R.id.go_help_list);
+        cl = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.go_help_list:
+                        Intent intent = new Intent(getApplicationContext(), map_help_list.class);
+                        startActivity(intent);
+                }
+            }
+        };
+        go_helplist.setOnClickListener(cl);
 
 
         // 권한ID를 가져옵니다
@@ -105,19 +115,11 @@ public class map extends AppCompatActivity implements MapView.CurrentLocationEve
         mapView.zoomIn(true);
         mapView.zoomOut(true);
 
-        //mapView.setCalloutBalloonAdapter(new CustomCalloutBalloonAdapter());
 
-        MapPoint MARKER_POINT = MapPoint.mapPointWithGeoCoord(37.293698, 127.121250);
-        MapPOIItem marker = new MapPOIItem();
-        marker.setItemName("test");
-        marker.setTag(0);
-        marker.setMapPoint(MARKER_POINT);
-        marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin);
-        mapView.addPOIItem(marker);
 
 
     }
+
 
     // 권한 체크 이후로직
     @Override
@@ -142,6 +144,80 @@ public class map extends AppCompatActivity implements MapView.CurrentLocationEve
         }
     }
 
+    class connect extends Thread {
+        @Override
+        public void run() {
+            try {
+                URL url = new URL("http://3.35.45.245:8080/api/user/test1@naver.com");
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET"); //전송방식
+                connection.setDoOutput(false);       //데이터를 쓸 지 설정
+                connection.setDoInput(true);        //데이터를 읽어올지 설정
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
+
+                // 출력물의 라인과 그 합에 대한 변수.
+                StringBuilder result = new StringBuilder();
+                String line;
+
+
+                while ((line = reader.readLine()) != null) {
+                    result.append(line);
+                }
+                final String data = result.toString();
+                JSONObject json = null;
+                json = new JSONObject(data);
+                location_x = json.getDouble("location_x");
+                location_y = json.getDouble("location_y");
+                mapView.setCalloutBalloonAdapter(new CustomCalloutBalloonAdapter());
+
+                MapPoint MARKER_POINT = MapPoint.mapPointWithGeoCoord(location_x, location_y);
+                MapPOIItem marker = new MapPOIItem();
+                marker.setItemName("test");
+                marker.setTag(0);
+                marker.setMapPoint(MARKER_POINT);
+                marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
+                marker.setSelectedMarkerType(MapPOIItem.MarkerType.CustomImage);
+                marker.setCustomImageAutoscale(false);
+                marker.setCustomImageAnchor(0.5f, 1.0f);
+                mapView.addPOIItem(marker);
+
+                Handler handler = new Handler(Looper.getMainLooper());
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast toast = Toast.makeText(getApplicationContext(), "좌표" + location_x + location_y, Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                }, 0);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    class CustomCalloutBalloonAdapter implements CalloutBalloonAdapter {
+        private final View mCalloutBalloon;
+
+        public CustomCalloutBalloonAdapter() {
+            mCalloutBalloon = getLayoutInflater().inflate(R.layout.balloon_layout, null);
+        }
+
+        @Override
+        public View getCalloutBalloon(MapPOIItem poiItem) {
+            ((ImageView) mCalloutBalloon.findViewById(R.id.image)).setImageResource(R.drawable.ic_launcher_foreground);
+            ((TextView) mCalloutBalloon.findViewById(R.id.ball_tv_name)).setText(poiItem.getItemName());
+            ((TextView) mCalloutBalloon.findViewById(R.id.ball_tv_address)).setText(poiItem.getItemName());
+            ((TextView) mCalloutBalloon.findViewById(R.id.click)).setText(poiItem.getItemName());
+            return mCalloutBalloon;
+        }
+
+        @Override
+        public View getPressedCalloutBalloon(MapPOIItem poiItem) {
+            return null;
+        }
+    }
 
     @Override
     public void onCurrentLocationUpdate(MapView mapView, MapPoint mapPoint, float v) {

@@ -46,13 +46,13 @@ public class CustomListView extends BaseAdapter {
 
         TextView num = convertView.findViewById(R.id.num);
         TextView title = convertView.findViewById(R.id.title);
-        TextView name = convertView.findViewById(R.id.name);
-        TextView date = convertView.findViewById(R.id.date);
+        TextView body_1 = convertView.findViewById(R.id.body_1);
+        TextView body_2 = convertView.findViewById(R.id.body_2);
 
         num.setText(listViewData.get(position).num);
         title.setText(listViewData.get(position).title);
-        name.setText(listViewData.get(position).name);
-        date.setText(listViewData.get(position).date);
+        body_1.setText(listViewData.get(position).body_1);
+        body_2.setText(listViewData.get(position).body_2);
 
         return convertView;
     }
