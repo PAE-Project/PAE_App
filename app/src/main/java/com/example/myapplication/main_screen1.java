@@ -94,10 +94,10 @@ public class main_screen1 extends AppCompatActivity {
                         intent = new Intent(getApplicationContext(), main_info.class);
                         startActivity(intent);
                         break;
-//                    case R.id.go_share:
-//                        intent = new Intent(getApplicationContext(), main_.class);
-//                        startActivity(intent);
-//                        break;
+                    case R.id.go_share:
+                        intent = new Intent(getApplicationContext(), main_share.class);
+                        startActivity(intent);
+                        break;
                     case R.id.go_board:
                         intent = new Intent(getApplicationContext(), main_board.class);
                         intent.putExtra("이메일", email);
@@ -110,6 +110,7 @@ public class main_screen1 extends AppCompatActivity {
         go_info.setOnClickListener(cl);
         go_board.setOnClickListener(cl);
         go_map.setOnClickListener(cl);
+        go_share.setOnClickListener(cl);
     }
 
 

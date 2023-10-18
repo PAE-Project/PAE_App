@@ -57,12 +57,16 @@
         <activity android:name=".main_info" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".main_info1" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".main_info2" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_share" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_share1" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".main_share2" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".main_board3" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".main_board4" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".RegisterActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".activity_board_detail" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".activity_consult_detail" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".activity_info_detail" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".activity_share_detail" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".map" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".map_help_list" android:theme="@style/Theme.AppCompat.NoActionBar"/>
     </application>
