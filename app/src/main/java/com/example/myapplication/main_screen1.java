@@ -100,6 +100,7 @@ public class main_screen1 extends AppCompatActivity {
 //                        break;
                     case R.id.go_board:
                         intent = new Intent(getApplicationContext(), main_board.class);
+                        intent.putExtra("이메일", email);
                         startActivity(intent);
                         break;
                 }

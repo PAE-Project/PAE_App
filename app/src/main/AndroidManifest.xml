@@ -62,6 +62,7 @@
         <activity android:name=".RegisterActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".activity_board_detail" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".activity_consult_detail" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".activity_info_detail" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".map" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".map_help_list" android:theme="@style/Theme.AppCompat.NoActionBar"/>
     </application>

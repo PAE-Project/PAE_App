@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class main_consult_info extends AppCompatActivity {
     Button go_consult;
-    TextView consultant, phonenum, address, info;
+    TextView consultant, email, address, info;
     View.OnClickListener cl;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,14 +24,30 @@ public class main_consult_info extends AppCompatActivity {
         String cost = intent.getStringExtra("cost");
         String gender = intent.getStringExtra("gender");
         String field = intent.getStringExtra("field");
+        String email_data = intent.getStringExtra("email");
+        String detail_data = intent.getStringExtra("detail");
         go_consult = (Button) findViewById(R.id.go_consult);
         consultant = (TextView) findViewById(R.id.consultant);
-        phonenum = (TextView) findViewById(R.id.phone);
+        email = (TextView) findViewById(R.id.email);
         address = (TextView) findViewById(R.id.address);
         info = (TextView) findViewById(R.id.info);
 
         consultant.setText(name);
-        info.setText(field+", "+cost+", "+gender);
+        email.setText(email_data);
+        if(cost.equals("0")){
+            if(gender.equals("1")){
+                info.setText(detail_data+"\n"+"가격 : 무료\n"+"성별 : 남");
+            } else{
+                info.setText(detail_data+"\n"+"가격 : 무료\n"+"성별 : 여");
+            }
+        } else{
+            if(gender.equals("1")){
+                info.setText(detail_data+"\n"+"가격 : "+cost+"원\n"+"성별 : 남");
+            } else{
+                info.setText(detail_data+"\n"+"가격 : "+cost+"원\n"+"성별 : 여");
+            }
+        }
+
         cl = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,8 +55,7 @@ public class main_consult_info extends AppCompatActivity {
                     case R.id.go_consult:
                         Toast toast = Toast.makeText(getApplicationContext(), "예약완료",Toast.LENGTH_SHORT);
                         toast.show();
-                        Intent intent = new Intent(getApplicationContext(), main_consult3.class);
-                        startActivity(intent);
+                        finish();
                         break;
                 }
 

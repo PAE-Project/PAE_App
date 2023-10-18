@@ -18,22 +18,34 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class main_board1 extends AppCompatActivity {
     ListView listView;
     Button go_register;
     View.OnClickListener cl;
+    String nickname;
     ArrayList<String> titleList = new ArrayList<>();
-    ArrayList<String> categoryList = new ArrayList<>();
     ArrayList<String> contentList = new ArrayList<>();
+    ArrayList<String> dateList = new ArrayList<>();
+    ArrayList<String> nicknameList = new ArrayList<>();
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_board1);
 
+
+
         go_register = (Button) findViewById(R.id.go_register);
+        Intent intent = getIntent();
+        nickname = intent.getStringExtra("닉네임");
 
         listView = findViewById(R.id.listView);
 
@@ -46,7 +58,10 @@ public class main_board1 extends AppCompatActivity {
                 switch (v.getId()) {
                     case R.id.go_register:
                         Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                        intent.putExtra("닉네임",nickname);
+                        intent.putExtra("카테고리", "육아 정보");
                         startActivity(intent);
+
                         break;
 
                 }
@@ -87,19 +102,19 @@ public class main_board1 extends AppCompatActivity {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     if(jsonObject.getString("category").equals("육아 정보")){
                         titleList.add(jsonObject.getString("title"));
-                        categoryList.add(jsonObject.getString("category"));
                         contentList.add(jsonObject.getString("content"));
+                        dateList.add(jsonObject.getString("date"));
+                        nicknameList.add(jsonObject.getString("nickname"));
                     }
                 }
-                System.out.println(titleList);
+
                 for (int i = 0; i < titleList.size(); i++) {
                     ListData listData = new ListData();
-                    String title = titleList.get(i);
                     listData.num = String.valueOf(i + 1);
-                    listData.title = title;
+                    listData.title = titleList.get(i);
 
-                    listData.body_1 = "주소";
-                    listData.body_2 = "날짜";
+                    listData.body_1 = "닉네임 : " + nicknameList.get(i);
+                    listData.body_2 = "작성일 : " + dateList.get(i);
                     listViewData.add(listData);
                 }
 
@@ -113,12 +128,11 @@ public class main_board1 extends AppCompatActivity {
                         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                Intent intent = new Intent(main_board1.this, activity_consult_detail.class);
+                                Intent intent = new Intent(main_board1.this, activity_board_detail.class);
                                 intent.putExtra("title", titleList.get(position));
-                                intent.putExtra("category", categoryList.get(position));
+                                intent.putExtra("date", dateList.get(position));
                                 intent.putExtra("content", contentList.get(position));
                                 startActivity(intent);
-
                             }
                         });
                     }
@@ -129,4 +143,5 @@ public class main_board1 extends AppCompatActivity {
             }
         }
     }
+
 }

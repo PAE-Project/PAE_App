@@ -112,8 +112,6 @@ public class login_sign_up3 extends AppCompatActivity {
             public void onProviderDisabled(String provider) {}
         };
 
-        System.out.println(x +" "+ y);
-
         Calendar c = Calendar.getInstance();
         int mYear = c.get(Calendar.YEAR);
         int mMonth = c.get(Calendar.MONTH);
@@ -205,7 +203,6 @@ public class login_sign_up3 extends AppCompatActivity {
                         break;
                     case R.id.yyyymmdd:
                         datePickerDialog.show();
-
                         break;
                 }
             }

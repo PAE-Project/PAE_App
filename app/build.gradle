@@ -47,4 +47,5 @@ dependencies {
     implementation('org.apache.httpcomponents:httpmime:4.3') {
         exclude module: "httpclient"
     }
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.0.1'
 }
