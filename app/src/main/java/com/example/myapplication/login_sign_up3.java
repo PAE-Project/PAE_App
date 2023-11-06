@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -10,6 +11,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -46,10 +48,10 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class login_sign_up3 extends AppCompatActivity {
-    Button go_0006, yyyymmdd;
+    Button go_0006, yyyymmdd, address1;
     RadioButton male, female;
     RadioGroup radioGroup;
-    EditText Name, NickName, Phonenum, address1, address2;
+    EditText Name, NickName, Phonenum, address2;
     LocalDate date = null;
     public JSONObject userdata = new JSONObject();
     View.OnClickListener cl;
@@ -57,8 +59,7 @@ public class login_sign_up3 extends AppCompatActivity {
     double x, y;
     private OkHttpClient client = new OkHttpClient();
     private MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-
-
+    private static final int SEARCH_ADDRESS_ACTIVITY = 10000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,8 +76,10 @@ public class login_sign_up3 extends AppCompatActivity {
         NickName = (EditText) findViewById(R.id.NickName);
 
         Phonenum = (EditText) findViewById(R.id.Phonenum);
-        address1 = (EditText) findViewById(R.id.adress1);
-        address2 = (EditText) findViewById(R.id.adress2);
+        Phonenum.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
+        address1 = (Button) findViewById(R.id.address1);
+        address2 = (EditText) findViewById(R.id.address2);
+
 
         RadioGroup.OnCheckedChangeListener radioGroupButtonChangeListener = new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -117,7 +120,7 @@ public class login_sign_up3 extends AppCompatActivity {
         int mMonth = c.get(Calendar.MONTH);
         int mDay = c.get(Calendar.DAY_OF_MONTH);
 
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, AlertDialog.THEME_HOLO_LIGHT, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 yyyymmdd.setText(year + "년 " + (month + 1) + "월 " + dayOfMonth + "일");
@@ -140,66 +143,79 @@ public class login_sign_up3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
+                    case R.id.address1:
+                        Intent i = new Intent(login_sign_up3.this, WebViewActivity.class);
+                        startActivityForResult(i, SEARCH_ADDRESS_ACTIVITY);
+                        break;
                     case R.id.go_0006:
-                        LocalDate date_now = null;
-                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                            date_now = LocalDate.now();
-                        }
-                        try {
-                            userdata.put("pw", pw);
-                            userdata.put("email", email);
-                            userdata.put("name", Name.getText().toString());
-                            userdata.put("nickname", NickName.getText().toString());
-                            userdata.put("address", address1.getText().toString() + address2.getText().toString());
-                            userdata.put("date", date);
-                            userdata.put("phone", Phonenum.getText().toString());
-                            userdata.put("helper", helper);
-                            userdata.put("gender", gender);
-                            userdata.put("location_x", x);
-                            userdata.put("location_y", y);
-                            userdata.put("created_at", date_now);
-                            userdata.put("updated_at", date_now);
+                        if (NickName.length() == 0) {
+                            Toast.makeText(getApplicationContext(), "닉네임을 입력해주세요", Toast.LENGTH_LONG).show();
+                        } else if (date.equals("")) {
+                            Toast.makeText(getApplicationContext(), "생년월일 입력해주세요", Toast.LENGTH_LONG).show();
+                        } else if (Phonenum.length() == 0) {
+                            Toast.makeText(getApplicationContext(), "전화번호를 입력해주세요", Toast.LENGTH_LONG).show();
+                        } else{
+                            LocalDate date_now = null;
+                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                date_now = LocalDate.now();
+                            }
+                            try {
+                                userdata.put("pw", pw);
+                                userdata.put("email", email);
+                                userdata.put("name", Name.getText().toString());
+                                userdata.put("nickname", NickName.getText().toString());
+                                userdata.put("address", address1.getText().toString() + address2.getText().toString());
+                                userdata.put("date", date);
+                                userdata.put("phone", Phonenum.getText().toString());
+                                userdata.put("helper", helper);
+                                userdata.put("gender", gender);
+                                userdata.put("location_x", x);
+                                userdata.put("location_y", y);
+                                userdata.put("created_at", date_now);
+                                userdata.put("updated_at", date_now);
 
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
-
-                        // RequestBody 생성
-                        RequestBody body = RequestBody.create(userdata.toString(), JSON);
-
-                        // Request 생성
-                        Request request = new Request.Builder()
-                                .url("http://3.35.45.245:8080/api/user")
-                                .post(body)
-                                .build();
-
-                        // 비동기 방식으로 요청 전송
-                        client.newCall(request).enqueue(new Callback() {
-                            @Override
-                            public void onFailure(Call call, IOException e) {
-                                e.printStackTrace();
+                            } catch (JSONException e) {
+                                throw new RuntimeException(e);
                             }
 
-                            @Override
-                            public void onResponse(Call call, Response response) throws IOException {
-                                if (!response.isSuccessful()) {
-                                    throw new IOException("Unexpected code " + response);
-                                }
+                            // RequestBody 생성
+                            RequestBody body = RequestBody.create(userdata.toString(), JSON);
 
-                                // 수신된 JSON 데이터 디버그 로그로 출력
-                                try {
-                                    String responseData = response.body().string();
-                                    JSONObject receivedJson = new JSONObject(responseData);
-                                    Log.d("Received JSON", receivedJson.toString());
-                                } catch (JSONException e) {
+                            // Request 생성
+                            Request request = new Request.Builder()
+                                    .url("http://3.35.45.245:8080/api/user")
+                                    .post(body)
+                                    .build();
+
+                            // 비동기 방식으로 요청 전송
+                            client.newCall(request).enqueue(new Callback() {
+                                @Override
+                                public void onFailure(Call call, IOException e) {
                                     e.printStackTrace();
                                 }
-                            }
-                        });
-                        Intent intent = new Intent(getApplicationContext(), login_sign_in.class);
-                        startActivity(intent);
-                        Toast toast = Toast.makeText(getApplicationContext(), "회원가입 완료", Toast.LENGTH_SHORT);
-                        toast.show();
+
+                                @Override
+                                public void onResponse(Call call, Response response) throws IOException {
+                                    if (!response.isSuccessful()) {
+                                        throw new IOException("Unexpected code " + response);
+                                    }
+
+                                    // 수신된 JSON 데이터 디버그 로그로 출력
+                                    try {
+                                        String responseData = response.body().string();
+                                        JSONObject receivedJson = new JSONObject(responseData);
+                                        Log.d("Received JSON", receivedJson.toString());
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                            Intent intent = new Intent(getApplicationContext(), login_sign_in.class);
+                            startActivity(intent);
+                            Toast toast = Toast.makeText(getApplicationContext(), "회원가입 완료", Toast.LENGTH_SHORT);
+                            toast.show();
+                        }
+
                         break;
                     case R.id.yyyymmdd:
                         datePickerDialog.show();
@@ -207,6 +223,7 @@ public class login_sign_up3 extends AppCompatActivity {
                 }
             }
         };
+        address1.setOnClickListener(cl);
         go_0006.setOnClickListener(cl);
         male.setOnClickListener(cl);
         female.setOnClickListener(cl);
@@ -225,4 +242,20 @@ public class login_sign_up3 extends AppCompatActivity {
             }
         }
     };
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent)
+    {
+        super.onActivityResult(requestCode, resultCode, intent);
+        switch (requestCode) {
+            case SEARCH_ADDRESS_ACTIVITY:
+                if (resultCode == RESULT_OK) {
+                    String data = intent.getExtras().getString("data");
+                    if (data != null) {
+                        address1.setText(data);
+                    }
+                }
+                break;
+        }
+    }
+
 }

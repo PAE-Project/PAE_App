@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+Font family: Joti One
+Line height: 48sp
+-->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
+    <style name="pae">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:shadowColor">#402D260F</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">2</item>
+
+    </style>
+
+    <style name="some_id">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="some_id2">
+        <item name="android:textSize">22.5sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="button">
+        <item name="android:textSize">22.5sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+</resources>

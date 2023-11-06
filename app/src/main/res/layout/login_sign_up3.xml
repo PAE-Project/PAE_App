@@ -1,163 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff">
 
-    <ScrollView
-        android:layout_width="370dp"
-        android:layout_height="650dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.34">
 
-        <LinearLayout
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.487"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.329"
-            tools:ignore="MissingConstraints">
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/rectangle_3"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="#FFDD66"
+                />
+
+            <TextView
+                android:id="@+id/pae"
+                android:layout_width="100dp"
+                android:layout_height="46.25dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="33.75dp"
+                android:layout_alignParentTop="true"
+                android:text="PAE"
+                android:fontFamily="@font/test"
+                android:textAppearance="@style/pae"
+                android:gravity="top"
+                />
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="36.57dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="90.29dp"
                 android:text="당신에 대해 알려주세요"
+                android:textSize="22.86sp"
                 android:textColor="#000000"
-                android:textSize="30dp"
-                android:textStyle="bold"
-                tools:layout_editor_absoluteX="106dp"
-                tools:layout_editor_absoluteY="103dp" />
+                android:gravity="center_horizontal|center_vertical" />
 
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="35.43dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="149.71dp"
                 android:text="이름"
-                android:textColor="#000000"
-                android:textSize="20dp"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="90dp" />
+                android:textAppearance="@style/some_id"
+                android:gravity="top"
+                android:textSize="13.71sp"/>
 
             <EditText
                 android:id="@+id/Name"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/memo_border"
-                android:ems="10"
+                android:layout_height="45.71dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="34.29dp"
+                android:layout_marginRight="34.29dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="171.43dp"
+                android:background="@drawable/rectangle_3"
                 android:inputType="textPersonName"
-                android:padding="10dp"
                 android:hint="이름을 입력해 주세요"
-                android:textColorHint="#C0C0C0"
-                android:textColor="#000000"
-                tools:layout_editor_absoluteY="109dp" />
+                android:textColorHint="#73000000"
+                android:textSize="13.71sp"
+                android:padding="10dp"
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="34.29dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="229.71dp"
                 android:text="닉네임"
-                android:textColor="#000000"
-                android:textSize="20dp"
-                tools:layout_editor_absoluteX="58dp"
-                tools:layout_editor_absoluteY="267dp" />
+                android:textAppearance="@style/some_id"
+                android:gravity="top" />
 
             <EditText
                 android:id="@+id/NickName"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/memo_border"
-                android:ems="10"
+                android:layout_height="45.71dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="34.29dp"
+                android:layout_marginRight="34.29dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="252.57dp"
+                android:background="@drawable/rectangle_3"
                 android:inputType="textPersonName"
+                android:hint="닉네임을 입력해주세요"
+                android:textColorHint="#73000000"
+                android:textSize="13.71sp"
                 android:padding="10dp"
-                android:hint="닉네임을 입력해 주세요"
-                android:textColorHint="#C0C0C0"
-                android:textColor="#000000"
-                tools:layout_editor_absoluteX="42dp"
-                tools:layout_editor_absoluteY="330dp" />
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="34.29dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="308.57dp"
                 android:text="생년월일"
-                android:textColor="#000000"
-                android:textSize="20dp"
-                tools:layout_editor_absoluteX="58dp"
-                tools:layout_editor_absoluteY="267dp" />
+                android:textAppearance="@style/some_id"
+                android:gravity="top" />
 
             <Button
                 android:id="@+id/yyyymmdd"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/memo_border"
-                android:ems="10"
+                android:layout_height="45.71dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="34.29dp"
+                android:layout_marginRight="34.29dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="330.29dp"
+                android:background="@drawable/rectangle_3"
                 android:inputType="textPersonName"
                 android:text="날짜 선택하기"
-                android:textSize="25dp"
+                android:textSize="13.71sp"
                 android:gravity="center"
-                android:textColor="#C0C0C0"
-                tools:layout_editor_absoluteX="42dp"
-                tools:layout_editor_absoluteY="330dp" />
+                android:textColor="#73000000" />
 
             <TextView
                 android:id="@+id/textView7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="34.29dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="388.57dp"
                 android:text="연락처"
-                android:textColor="#000000"
-                android:textSize="20dp"
-                tools:layout_editor_absoluteX="58dp"
-                tools:layout_editor_absoluteY="267dp" />
+                android:textAppearance="@style/some_id"
+                android:gravity="top" />
 
 
             <EditText
                 android:id="@+id/Phonenum"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/memo_border"
-                android:ems="10"
+                android:layout_height="45.71dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="34.29dp"
+                android:layout_marginRight="34.29dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="410.29dp"
+                android:background="@drawable/rectangle_3"
                 android:inputType="textPersonName"
+                android:hint="연락처를 입력해주세요"
+                android:textColorHint="#73000000"
+                android:textSize="13.71sp"
                 android:padding="10dp"
-                android:hint="연락처를 입력해주세요(-제외)"
-                android:textColorHint="#C0C0C0"
-                android:textColor="#000000"
-                android:maxLength="11"
-                tools:layout_editor_absoluteX="42dp"
-                tools:layout_editor_absoluteY="330dp" />
+                android:textColor="#000000" />
 
             <TextView
                 android:id="@+id/sex"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="34.29dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="468.57dp"
                 android:text="성별"
-                android:textColor="#000000"
-                android:textSize="20dp"
-                tools:layout_editor_absoluteX="58dp"
-                tools:layout_editor_absoluteY="267dp" />
+                android:textAppearance="@style/some_id"
+                android:gravity="top" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -166,17 +192,17 @@
                     android:id="@+id/radioGroup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     android:orientation="horizontal">
 
                     <RadioButton
                         android:checked="true"
                         android:id="@+id/male"
-                        android:layout_width="180dp"
-                        android:layout_height="40dp"
+                        android:layout_width="160dp"
+                        android:layout_height="46.86dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="34.29dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="491.43dp"
                         android:background="@drawable/selector_radio_button"
                         android:textColor="@drawable/selector_radio_text"
                         android:button="@null"
@@ -184,82 +210,93 @@
                         android:gravity="center"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:textSize="17dp"
+                        android:textSize="13.71sp"
                         android:text="남성" />
 
                     <RadioButton
                         android:id="@+id/female"
-                        android:layout_width="180dp"
-                        android:layout_height="40dp"
+                        android:layout_width="160dp"
+                        android:layout_height="46.86dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="22.28dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="491.43dp"
                         android:background="@drawable/selector_radio_button"
+                        android:textColor="@drawable/selector_radio_text"
                         android:button="@null"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:text="여성"
-                        android:textSize="17dp"
-                        android:textAlignment="center"
-                        android:textColor="@drawable/selector_radio_text" />
+                        android:textSize="13.71sp"
+                        android:textAlignment="center" />
                 </RadioGroup>
-            </LinearLayout>
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/adress"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="34.29dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="548.57dp"
+                android:textAppearance="@style/some_id"
+                android:gravity="top"
                 android:text="주소"
                 android:textColor="#000000"
-                android:textSize="20dp"
-                tools:layout_editor_absoluteX="58dp"
-                tools:layout_editor_absoluteY="267dp" />
+                android:textSize="13.71sp" />
 
-            <EditText
-                android:id="@+id/adress1"
+            <Button
+                android:id="@+id/address1"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/memo_border"
-                android:ems="10"
+                android:layout_height="45.71dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="34.29dp"
+                android:layout_marginRight="34.29dp"
+                android:layout_marginTop="571.43dp"
+                android:background="@drawable/rectangle_3"
+                android:elevation="2.29dp"
                 android:inputType="textPersonName"
                 android:padding="10dp"
-                android:hint="도로명 주소 입력"
-                android:textColorHint="#C0C0C0"
-                android:textColor="#000000"
-                tools:layout_editor_absoluteX="42dp"
-                tools:layout_editor_absoluteY="330dp" />
+                android:text="도로명 주소 입력"
+                android:textColor="#73000000"
+                android:textSize="13.71sp" />
 
             <EditText
-                android:id="@+id/adress2"
+                android:id="@+id/address2"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/memo_border"
-                android:ems="10"
+                android:layout_height="45.71dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="34.29dp"
+                android:layout_marginRight="34.29dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="628.57dp"
+                android:elevation="2.29dp"
+                android:background="@drawable/rectangle_3"
                 android:inputType="textPersonName"
                 android:padding="10dp"
                 android:hint="세부주소 입력"
+                android:textSize="13.71sp"
                 android:textColorHint="#C0C0C0"
-                android:textColor="#000000"
-                tools:layout_editor_absoluteX="42dp"
-                tools:layout_editor_absoluteY="330dp" />
+                android:textColor="#73000000" />
 
             <Button
                 android:id="@+id/go_0006"
-                android:layout_width="370dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:background="@drawable/btn_yellow"
-                android:layout_marginTop="10dp"
-                android:text="다음"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.578"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.934" />
-        </LinearLayout>
+                android:layout_width="match_parent"
+                android:layout_height="45.71dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="34dp"
+                android:layout_marginRight="34dp"
+                android:layout_marginBottom="34dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="711dp"
+                android:background="@drawable/vector"
+                android:elevation="4.57dp"
+                android:text="다음" />
+        </RelativeLayout>
     </ScrollView>
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

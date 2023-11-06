@@ -3,11 +3,13 @@ package com.example.myapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,13 +20,25 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.time.LocalDate;
+
 public class main_screen1 extends AppCompatActivity {
-    TextView find_email, change_pw, change_info;
+    TextView tv_logo, tv_name, tv_info;
     Toolbar toolbar;
+    String email, nickname, address, name, date, gender;
     Button go_info, go_map, go_board, go_share, go_consult;
     View.OnClickListener cl;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    ImageView ivMenu;
+    LocalDate now;
+    int age;
     private NavigationView nav;
 
     @Override
@@ -39,11 +53,27 @@ public class main_screen1 extends AppCompatActivity {
         go_board = (Button) findViewById(R.id.go_board);
         go_info = (Button) findViewById(R.id.go_info);
         go_share = (Button) findViewById(R.id.go_share);
+        tv_logo = (TextView) findViewById(R.id.tv_logo);
+
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         nav = findViewById(R.id.navigation_view);
+        ivMenu=findViewById(R.id.iv_menu);
+
+        setSupportActionBar(toolbar);
+
+        ivMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(Gravity.LEFT);
+            }
+        });
 
         Intent secondIntent = getIntent();
-        String email = secondIntent.getStringExtra("이메일");
+        email = secondIntent.getStringExtra("이메일");
+
+
+        finduser fin = new finduser();
+        fin.start();
 
         nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -52,6 +82,18 @@ public class main_screen1 extends AppCompatActivity {
                     case R.id.change_pw:
                         Intent intent = new Intent(getApplicationContext(), main_update_pw.class);
                         intent.putExtra("이메일", email);
+                        startActivity(intent);
+                        break;
+                    case R.id.my_board:
+                        intent = new Intent(getApplicationContext(), main_my_board.class);
+                        intent.putExtra("이메일", email);
+                        intent.putExtra("닉네임", nickname);
+                        startActivity(intent);
+                        break;
+                    case R.id.my_share:
+                        intent = new Intent(getApplicationContext(), main_my_share.class);
+                        intent.putExtra("이메일", email);
+                        intent.putExtra("닉네임", nickname);
                         startActivity(intent);
                         break;
                     case R.id.change_info:
@@ -72,11 +114,13 @@ public class main_screen1 extends AppCompatActivity {
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true); // 왼쪽 상단 버튼 만들기
-        //getSupportActionBar().setHomeAsUpIndicator(R.drawable.menu); //왼쪽 상단 버튼 아이콘 지정
-
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         navigationView = (NavigationView)findViewById(R.id.navigation_view);
+        View nav_header_view = navigationView.getHeaderView(0);
+
+        tv_name = (TextView) nav_header_view.findViewById(R.id.tv_name);
+        tv_info = (TextView) nav_header_view.findViewById(R.id.tv_info);
+
 
         cl = new View.OnClickListener() {
             @Override
@@ -96,6 +140,9 @@ public class main_screen1 extends AppCompatActivity {
                         break;
                     case R.id.go_share:
                         intent = new Intent(getApplicationContext(), main_share.class);
+                        intent.putExtra("이메일", email);
+                        intent.putExtra("닉네임", nickname);
+                        intent.putExtra("주소", address);
                         startActivity(intent);
                         break;
                     case R.id.go_board:
@@ -132,15 +179,6 @@ public class main_screen1 extends AppCompatActivity {
         }
     };
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home: // 왼쪽 상단 버튼 눌렀을 때
-                drawerLayout.openDrawer(GravityCompat.START);
-                return true;
-            }
-        return super.onOptionsItemSelected(item);
-    }
 
 
     @Override
@@ -149,6 +187,55 @@ public class main_screen1 extends AppCompatActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+        }
+    }
+
+    class finduser extends Thread {
+        @Override
+        public void run() {
+            try {
+                URL url = new URL("http://3.35.45.245:8080/api/user/"+email);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET"); //전송방식
+                connection.setDoOutput(false);       //데이터를 쓸 지 설정
+                connection.setDoInput(true);        //데이터를 읽어올지 설정
+
+                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
+
+                // 출력물의 라인과 그 합에 대한 변수.
+                StringBuilder result = new StringBuilder();
+                String line;
+
+
+                while ((line = reader.readLine()) != null) {
+                    result.append(line);
+                }
+
+
+                final String data = result.toString();
+                JSONObject userdata = null;
+                userdata = new JSONObject(data);
+                nickname = userdata.getString("nickname");
+                address = userdata.getString("address");
+                name = userdata.getString("name");
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                    now = LocalDate.now();
+                }
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                    age = now.getYear() - Integer.parseInt(userdata.getString("date").substring(0,4));
+                }
+                if(userdata.getBoolean("gender")) {
+                    gender = "남자";
+                } else{
+                    gender = "여자";
+                }
+                tv_logo.setText(name+"님 환영합니다");
+                tv_name.setText(name+"님 환영합니다");
+                tv_info.setText(gender+", "+age);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

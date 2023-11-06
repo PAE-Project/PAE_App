@@ -35,7 +35,7 @@ public class main_board extends AppCompatActivity {
         know = (Button) findViewById(R.id.know);
         Intent intent = getIntent();
         email = intent.getStringExtra("이메일");
-        System.out.println(email);
+        nickname = intent.getStringExtra("닉네임");
         connect con = new connect();
         con.start();
         cl = new View.OnClickListener() {

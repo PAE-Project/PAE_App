@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/sell"
+        android:title="판매 중"/>
+
+    <item android:id="@+id/sell_finish"
+        android:title="판매 완료"/>
+
+    <item android:id="@+id/share"
+        android:title="나눔 중"/>
+
+    <item android:id="@+id/share_finish"
+        android:title="나눔 완료"/>
+
+</menu>

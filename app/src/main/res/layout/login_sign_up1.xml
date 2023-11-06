@@ -6,11 +6,47 @@
     android:layout_height="match_parent"
     android:background="#ffffff">
 
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/android_sma"
+        android:layout_width="match_parent"
+        android:layout_height="800dp"
+        android:background="#FFFFFF"
+        android:clipToOutline="true"
+        tools:ignore="MissingConstraints">
+        <View
+            android:id="@+id/rectangle_3"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="#99FFC600"
+            />
+
+        <TextView
+            android:id="@+id/pae"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="33.75dp"
+            android:layout_alignParentTop="true"
+            android:fontFamily="@font/test"
+            android:text="PAE"
+            android:textAppearance="@style/pae"
+            android:gravity="top"
+            />
+
+
+
+    </RelativeLayout>
+
+
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginTop="65.25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.585"
@@ -21,64 +57,70 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="16.25dp"
+            android:layout_alignParentTop="true"
             android:text="필요한 정보만 골라드려요"
             android:textColor="#000000"
-            android:textSize="30dp"
-            android:textStyle="bold"
+            android:textSize="25sp"
             tools:layout_editor_absoluteX="106dp"
             tools:layout_editor_absoluteY="103dp" />
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:layout_margin="5dp"
+            android:layout_marginLeft="16.25dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="31.25dp"
             android:text="정보 제공을 위해 아래 항목을 선택해주세요"
             android:textColor="#C0C0C0"
-            android:textSize="18dp"
+            android:textSize="15sp"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="90dp" />
 
         <RadioGroup
             android:id="@+id/radioGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16.25dp"
+            android:layout_marginRight="16.25dp"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:orientation="horizontal">
+            app:layout_constraintTop_toTopOf="parent">
 
             <RadioButton
-                android:checked="true"
                 android:id="@+id/help"
-                android:layout_width="180dp"
-                android:layout_height="80dp"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
                 android:background="@drawable/selector_radio_button"
-                android:textColor="@drawable/selector_radio_text"
                 android:button="@null"
-                android:textAlignment="center"
+                android:checked="true"
                 android:gravity="center"
+                android:layout_marginRight="25dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:textSize="17dp"
-                android:text="도움이 필요해요" />
+                android:text="도움이 필요해요"
+                android:textAlignment="center"
+                android:textColor="@drawable/selector_radio_text"
+                android:textSize="15sp" />
 
             <RadioButton
                 android:id="@+id/helper"
-                android:layout_width="180dp"
-                android:layout_height="80dp"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
                 android:background="@drawable/selector_radio_button"
                 android:button="@null"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
+
                 android:text="도움을 주고 싶어요"
-                android:textSize="17dp"
                 android:textAlignment="center"
-                android:textColor="@drawable/selector_radio_text" />
+                android:textColor="@drawable/selector_radio_text"
+                android:textSize="15sp" />
         </RadioGroup>
 
 
@@ -128,16 +170,20 @@
 
     <Button
         android:id="@+id/go_0003"
-        android:layout_width="370dp"
-        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="37.5dp"
+        android:layout_marginRight="37.5dp"
         android:layout_gravity="center"
-        android:background="@drawable/btn_yellow"
-        android:text="다음"
+        android:text="다 음"
+        android:background="@drawable/vector"
+        android:elevation="2.5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.578"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:textAppearance="@style/button"
         app:layout_constraintVertical_bias="0.934" />
 
 

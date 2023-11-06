@@ -12,35 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:background="@drawable/background_yellow"/>
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/Theme.NavigationDrawer">
-
-        </androidx.appcompat.widget.Toolbar>
-
-        <EditText
-            android:id="@+id/edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/memo_border"
-            android:padding="10dp"
-            android:layout_below="@id/toolbar"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textColorHint="#C0C0C0"
-            android:textColor="#FFFFFF"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:hint="안녕하세요 무엇이 필요하신가요?" />
-
+        <include  layout="@layout/toolbar_main"/>
 
 
     </RelativeLayout>

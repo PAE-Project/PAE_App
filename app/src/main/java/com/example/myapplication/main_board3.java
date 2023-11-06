@@ -50,7 +50,7 @@ public class main_board3 extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.go_register:
-                        Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), RegisterActivity_board.class);
                         intent.putExtra("닉네임",nickname);
                         intent.putExtra("카테고리", "지원 정보");
                         startActivity(intent);

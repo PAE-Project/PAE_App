@@ -1,131 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:id="@+id/android_sma"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:clipToOutline="true"
+    android:background="#FFFFFF">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="370dp"
-        android:layout_height="534dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.329"
-        tools:ignore="MissingConstraints">
+    <View
+        android:id="@+id/rectangle_3"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#FFDD66"
+        />
+
+    <TextView
+        android:id="@+id/pae"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="33.75dp"
+        android:layout_alignParentTop="true"
+        android:text="PAE"
+        android:fontFamily="@font/test"
+        android:textAppearance="@style/pae"
+        android:gravity="top"
+        />
+
+    <RelativeLayout
+        android:id="@+id/frame_2"
+        android:layout_width="match_parent"
+        android:layout_height="578.75dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="22.5dp"
+        android:layout_marginRight="22.5dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="83.75dp">
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="16.25dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="16.25dp"
+            android:gravity="center_horizontal|center_vertical"
             android:text="회원가입"
             android:textColor="#000000"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="106dp"
-            tools:layout_editor_absoluteY="103dp" />
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="16.25dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="78.75dp"
+            android:gravity="top"
             android:text="이메일"
             android:textColor="#000000"
-            android:textSize="20dp"
-            tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="90dp" />
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/email_0003"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/memo_border"
-            android:ems="10"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="16.25dp"
+            android:layout_marginRight="16.25dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="103.75dp"
+            android:background="@drawable/rectangle_3"
             android:inputType="textPersonName"
             android:hint="test@test.com"
             android:padding="10dp"
             android:textColor="#000000"
-            android:textColorHint="#C0C0C0"
-            tools:layout_editor_absoluteY="109dp" />
+            android:textSize="15sp"
+            android:textColorHint="#73000000" />
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="16.25dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="191.25dp"
+            android:gravity="top"
             android:text="비밀번호"
             android:textColor="#000000"
-            android:textSize="20dp"
-            tools:layout_editor_absoluteX="58dp"
-            tools:layout_editor_absoluteY="267dp" />
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/password_0003"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/memo_border"
-            android:ems="10"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="16.25dp"
+            android:layout_marginRight="16.25dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="216.25dp"
+            android:background="@drawable/rectangle_3"
+            android:elevation="2.5dp"
             android:inputType="textPersonName"
             android:hint="영문+숫자+특수문자 포함 8자 이상"
             android:textColor="#000000"
             android:password="true"
             android:padding="10dp"
-            android:textColorHint="#C0C0C0"
-            tools:layout_editor_absoluteX="42dp"
-            tools:layout_editor_absoluteY="330dp" />
+            android:textSize="15sp"
+            android:textColorHint="#73000000" />
 
 
         <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="16.25dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="303.75dp"
+            android:gravity="top"
             android:text="비밀번호 확인"
             android:textColor="#000000"
-            android:textSize="20dp"
-            tools:layout_editor_absoluteX="58dp"
-            tools:layout_editor_absoluteY="267dp" />
+            android:textSize="15sp" />
 
         <EditText
-            android:id="@+id/passwordCheck_0003"
+            android:id="@+id/rectangle_4"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_margin="5dp"
-            android:background="@drawable/memo_border"
-            android:ems="10"
-            android:inputType="textPersonName"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="16.25dp"
+            android:layout_marginRight="16.25dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="328.75dp"
+            android:background="@drawable/rectangle_3"
+            android:elevation="2.5dp"
             android:hint="영문+숫자+특수문자 포함 8자 이상"
-            android:textColor="#000000"
+            android:inputType="textPersonName"
             android:password="true"
+            android:textColor="#000000"
             android:padding="10dp"
-            android:textColorHint="#C0C0C0"
-            tools:layout_editor_absoluteX="42dp"
-            tools:layout_editor_absoluteY="330dp" />
+            android:textSize="15sp"
+            android:textColorHint="#73000000" />
 
-    </LinearLayout>
+
+
+    </RelativeLayout>
 
     <Button
         android:id="@+id/go_0004"
-        android:layout_width="370dp"
-        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="37.5dp"
+        android:layout_marginRight="37.5dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="37.5dp"
+
+        android:background="@drawable/vector"
         android:layout_gravity="center"
-        android:background="@drawable/btn_yellow"
-        android:text="다음"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.578"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.934" />
+        android:text="다 음"
+        android:textAppearance="@style/button"
+        android:elevation="2.5dp" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

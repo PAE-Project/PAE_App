@@ -15,7 +15,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="260dp"
         android:orientation="horizontal"
         android:layout_weight="10">
         <Button
@@ -24,9 +24,9 @@
             android:layout_height="match_parent"
             android:background="@drawable/mbtn1"
             android:layout_weight="10"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="20dp" />
 
         <Button
             android:id="@+id/go_share"
@@ -34,14 +34,14 @@
             android:layout_height="match_parent"
             android:background="@drawable/mbtn2"
             android:layout_weight="10"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="20dp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="260dp"
         android:orientation="horizontal"
         android:layout_weight="10">
 
@@ -51,9 +51,9 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/mbtn3"
                 android:layout_weight="10"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp" />
 
             <Button
                 android:id="@+id/go_map"
@@ -61,9 +61,9 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/mbtn4"
                 android:layout_weight="10"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="20dp" />
 
         </LinearLayout>
 
@@ -71,9 +71,9 @@
         android:id="@+id/go_board"
         android:layout_width="match_parent"
         android:background="@drawable/mbtn5"
-        android:layout_height="120dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_height="130dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginBottom="50dp" />
 
 

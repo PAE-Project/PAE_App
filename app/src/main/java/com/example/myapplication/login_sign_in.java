@@ -1,7 +1,10 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +24,7 @@ public class login_sign_in extends AppCompatActivity {
     public EditText edit_email, edit_password;
     public static String email, pw, loginResult = "false";
     View.OnClickListener cl;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_sign_in);
@@ -31,6 +35,7 @@ public class login_sign_in extends AppCompatActivity {
         go_1001 = (Button) findViewById(R.id.go_1001);
         edit_email = (EditText) findViewById(R.id.email_0006);
         edit_password = (EditText) findViewById(R.id.password_0006);
+
 
         cl = new View.OnClickListener() {
 
@@ -55,9 +60,16 @@ public class login_sign_in extends AppCompatActivity {
                     case R.id.go_1001:
                         email = edit_email.getText().toString();
                         pw = edit_password.getText().toString();
-                        connect con = new connect();
-                        con.start();
-
+                        if(email.length() == 0 && pw.length() == 0){
+                            Toast.makeText(getApplicationContext(), "값을 모두 입력해주세요", Toast.LENGTH_LONG).show();
+                        } else if (email.length() == 0) {
+                            Toast.makeText(getApplicationContext(), "이메일을 입력해주세요", Toast.LENGTH_LONG).show();
+                        } else if (pw.length() == 0) {
+                            Toast.makeText(getApplicationContext(), "비밀번호를 입력해주세요", Toast.LENGTH_LONG).show();
+                        } else{
+                            connect con = new connect();
+                            con.start();
+                        }
                         break;
                 }
             }
@@ -68,11 +80,12 @@ public class login_sign_in extends AppCompatActivity {
         go_1001.setOnClickListener(cl);
 
     }
-    class connect extends Thread{
+
+    class connect extends Thread {
         @Override
         public void run() {
             try {
-                URL url = new URL("http://3.35.45.245:8080/api/login/"+email+"/"+pw);
+                URL url = new URL("http://3.35.45.245:8080/api/login/" + email + "/" + pw);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("GET"); //전송방식
                 connection.setDoOutput(false);       //데이터를 쓸 지 설정
@@ -93,11 +106,11 @@ public class login_sign_in extends AppCompatActivity {
                     @Override
                     public void run() {
                         loginResult = result.toString();
-                        if(loginResult.equals("true")){
+                        if (loginResult.equals("true")) {
                             Toast toast = Toast.makeText(getApplicationContext(), "로그인 성공.", Toast.LENGTH_SHORT);
                             toast.show();
                             Intent intent = new Intent(getApplicationContext(), main_screen1.class);
-                            intent.putExtra("이메일",email);
+                            intent.putExtra("이메일", email);
                             startActivity(intent);
                         } else {
                             Toast toast = Toast.makeText(getApplicationContext(), "로그인 실패.", Toast.LENGTH_SHORT);

@@ -19,4 +19,9 @@
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
     </style>
+
+    <style name="test_test_c">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#73000000</item>
+    </style>
 </resources>

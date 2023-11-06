@@ -43,20 +43,11 @@ public class main_share1 extends AppCompatActivity {
         setContentView(R.layout.main_share1);
 
         listView = findViewById(R.id.listView);
+        go_register = findViewById(R.id.go_register);
 
         connect con = new connect();
         con.start();
 
-        cl = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()) {
-
-
-                }
-
-            }
-        };
 
     }
 
@@ -126,7 +117,7 @@ public class main_share1 extends AppCompatActivity {
                                 intent.putExtra("category", categoryList.get(position));
                                 intent.putExtra("state", stateList.get(position));
                                 intent.putExtra("nickname", nicknameList.get(position));
-                                //intent.putExtra("img", imgList.get(position));
+                                intent.putExtra("img", imgList.get(position));
                                 startActivity(intent);
                             }
                         });
