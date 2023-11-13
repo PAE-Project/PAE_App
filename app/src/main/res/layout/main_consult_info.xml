@@ -1,110 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF">
-    <TextView
-        android:id="@+id/textView"
+    <View
+        android:id="@+id/rectangle_3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_height="55dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#99FFC600" />
+
+    <TextView
+        android:id="@+id/pae"
+        android:layout_width="wrap_content"
+        android:layout_height="46.25dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="33.75dp"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/test"
+        android:gravity="top"
+        android:text="PAE"
+        android:textAppearance="@style/pae" />
+
+    <TextView
+        android:id="@+id/some_id"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="7dp"
+        android:gravity="top"
         android:text="상담원 정보"
-        android:textColor="#000000"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="10dp"/>
+        android:textAppearance="@style/some_id"
+        android:textColor="#B3000000"
+        android:textSize="28.75sp" />
 
     <TextView
         android:id="@+id/textView17"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="37.5dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
         android:textColor="#000000"
+        android:textSize="15sp"
+        android:textAppearance="@style/some_id"
+        android:gravity="top"
         android:text="프로필 사진" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="15dp"
+        android:layout_width="122.5dp"
+        android:layout_height="152.5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="38.75dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="123.75dp"
+        android:background="@drawable/rectangle_5"
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <TextView
         android:id="@+id/textView18"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:textColor="#000000"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="38.75dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="288.75dp"
+        android:textAppearance="@style/some_id"
+        android:textSize="15sp"
+        android:gravity="top"
         android:text="이름" />
 
     <TextView
         android:id="@+id/consultant"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="38.75dp"
+        android:layout_marginRight="38.75dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="313.75dp"
+        android:background="@drawable/rectangle_3"
+        android:elevation="2.5dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
         android:textColor="#000000"
-        android:text="이름"
-        android:layout_marginBottom="10dp"/>
+        android:text="이름" />
 
     <TextView
         android:id="@+id/textView20"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="이메일"
-        android:textColor="#000000"
-        android:textSize="20dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="38.75dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="377.5dp"
+        android:textAppearance="@style/some_id"
+        android:textSize="15sp"
+        android:gravity="top"
+        android:text="이메일" />
 
     <TextView
         android:id="@+id/email"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="38.75dp"
+        android:layout_marginRight="38.75dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="402.5dp"
+        android:background="@drawable/rectangle_3"
+        android:elevation="2.5dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:textColor="#000000"
         android:text="test@naver.com"
-        android:textColor="#000000" />
+
+        />
 
     <TextView
         android:id="@+id/textView22"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:textColor="#000000"
-        android:text="주소" />
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="38.75dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="466.25dp"
+        android:textAppearance="@style/some_id"
+        android:textSize="15sp"
+        android:gravity="top"
+        android:text="가격" />
 
     <TextView
-        android:id="@+id/address"
+        android:id="@+id/price_tv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="주소"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="38.75dp"
+        android:layout_marginRight="38.75dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="491.25dp"
+        android:background="@drawable/rectangle_3"
+        android:elevation="2.5dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
         android:textColor="#000000"
-        android:layout_marginBottom="10dp"/>
+        android:text="가격"/>
 
     <TextView
         android:id="@+id/textView24"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:textColor="#000000"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="38.75dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="551.25dp"
+        android:textAppearance="@style/some_id"
+        android:textSize="15sp"
+        android:gravity="top"
         android:text="정보" />
 
     <TextView
         android:id="@+id/info"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="정보"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="38.75dp"
+        android:layout_marginRight="38.75dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="576.25dp"
+        android:background="@drawable/rectangle_3"
+        android:elevation="2.5dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
         android:textColor="#000000"
-        android:layout_marginBottom="10dp"/>
-
-    <Button
-        android:id="@+id/go_consult"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@drawable/btn_yellow"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:text="신청하기" />
+        android:text="정보"/>
 
 
-</LinearLayout>
+
+</RelativeLayout>

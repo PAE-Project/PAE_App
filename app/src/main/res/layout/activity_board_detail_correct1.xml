@@ -5,6 +5,8 @@
     android:background="#ffffff"
     android:orientation="vertical">
 
+
+
     <View
         android:id="@+id/rectangle_3"
         android:layout_width="match_parent"
@@ -50,18 +52,34 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <EditText
+                android:id="@+id/title_et"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="103.75dp"
+                android:layout_marginTop="95dp"
+                android:layout_marginRight="37.5dp"
+                android:background="@drawable/rectangle_3"
+                android:elevation="2.5dp"
+                android:hint="제목을 입력하세요."
+                android:padding="10dp"
+                android:textColor="#000000"
+                android:textColorHint="#73000000" />
+
             <TextView
-                android:id="@+id/title_tv"
+                android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="37.5dp"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="75dp"
-                android:textSize="25sp"
-                android:gravity="top"
+                android:layout_marginLeft="37.5dp"
+                android:layout_marginTop="103.75dp"
                 android:text="제목"
-                android:textColor="#000000" />
+                android:textAppearance="@style/some_id"
+                android:textColor="#000000"
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/category_tv"
@@ -70,10 +88,10 @@
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="38.75dp"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="112.5dp"
+                android:layout_marginTop="160dp"
                 android:textAppearance="@style/some_id"
                 android:gravity="top"
-                android:text="작성일"
+                android:text="카테고리"
                 android:textSize="15sp"
                 android:textColor="#B3A0A0A0" />
 
@@ -82,29 +100,55 @@
                 android:layout_width="wrap_content"
                 android:layout_height="22dp"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="237.5dp"
+                android:layout_marginLeft="200dp"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="112.5dp"
+                android:layout_marginTop="160dp"
                 android:textSize="15sp"
                 android:gravity="top"
                 android:text="날짜"
                 android:textColor="#B3A0A0A0" />
 
-            <TextView
-                android:id="@+id/content_tv"
+            <EditText
+                android:id="@+id/content_et"
                 android:layout_width="match_parent"
-                android:layout_height="450dp"
+                android:layout_height="400dp"
                 android:layout_alignParentLeft="true"
                 android:layout_marginLeft="37.5dp"
                 android:layout_marginRight="37.5dp"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="200dp"
                 android:padding="10dp"
                 android:background="@drawable/rectangle_4"
                 android:textSize="15sp"
                 android:text="내용."
                 android:textColor="#B3A0A0A0" />
 
+            <Button
+                android:id="@+id/modify"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="37.5dp"
+                android:layout_marginBottom="37.5dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/vector"
+                android:elevation="2.5dp"
+                android:textSize="22.5sp"
+                android:textColor="#FFFFFF"
+                android:text="수 정" />
+
+            <Button
+                android:id="@+id/delete"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="37.5dp"
+                android:layout_marginBottom="37.5dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/vector"
+                android:elevation="2.5dp"
+                android:textSize="22.5sp"
+                android:textColor="#FFFFFF"
+                android:text="삭 제" />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

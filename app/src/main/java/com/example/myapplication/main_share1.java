@@ -22,8 +22,6 @@ import java.util.ArrayList;
 
 public class main_share1 extends AppCompatActivity {
     ListView listView;
-    Button go_register;
-    View.OnClickListener cl;
     String nickname;
     ArrayList<String> titleList = new ArrayList<>();
     ArrayList<String> categoryList = new ArrayList<>();
@@ -43,7 +41,6 @@ public class main_share1 extends AppCompatActivity {
         setContentView(R.layout.main_share1);
 
         listView = findViewById(R.id.listView);
-        go_register = findViewById(R.id.go_register);
 
         connect con = new connect();
         con.start();
@@ -80,6 +77,7 @@ public class main_share1 extends AppCompatActivity {
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     if(jsonObject.getString("state").equals("판매 중")){
+                        System.out.println(jsonObject);
                         titleList.add(jsonObject.getString("title"));
                         priceList.add(jsonObject.getString("price"));
                         categoryList.add(jsonObject.getString("category"));

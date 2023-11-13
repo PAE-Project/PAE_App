@@ -73,7 +73,7 @@
                 android:layout_marginTop="112.5dp"
                 android:textAppearance="@style/some_id"
                 android:gravity="top"
-                android:text="작성일"
+                android:text="카테고리"
                 android:textSize="15sp"
                 android:textColor="#B3A0A0A0" />
 
@@ -105,6 +105,19 @@
                 android:text="내용."
                 android:textColor="#B3A0A0A0" />
 
+            <Button
+                android:id="@+id/modify"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="37.5dp"
+                android:layout_marginBottom="37.5dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/vector"
+                android:elevation="2.5dp"
+                android:textSize="22.5sp"
+                android:textColor="#FFFFFF"
+                android:text="수정하기" />
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

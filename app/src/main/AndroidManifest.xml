@@ -39,7 +39,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".login_start" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".login_sign_up1" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".login_sign_up2" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".login_sign_up3" android:theme="@style/Theme.AppCompat.NoActionBar"/>
@@ -77,6 +76,10 @@
         <activity android:name=".main_my_share" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".map_help_list" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name=".WebViewActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".activity_board_detail_correct" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".activity_board_detail_correct1" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".activity_share_detail_correct" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:name=".activity_share_detail_correct1" android:theme="@style/Theme.AppCompat.NoActionBar"/>
     </application>
 
 </manifest>

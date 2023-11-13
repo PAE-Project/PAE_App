@@ -41,7 +41,6 @@ public class main_board4 extends AppCompatActivity {
         Intent intent = getIntent();
         nickname = intent.getStringExtra("닉네임");
 
-        listView = findViewById(R.id.listView);
 
         connect con = new connect();
         con.start();
@@ -55,6 +54,7 @@ public class main_board4 extends AppCompatActivity {
                         intent.putExtra("닉네임",nickname);
                         intent.putExtra("카테고리", "일상 정보");
                         startActivity(intent);
+                        finish();
                         break;
 
                 }
@@ -62,8 +62,9 @@ public class main_board4 extends AppCompatActivity {
             }
         };
         go_register.setOnClickListener(cl);
-
     }
+
+
     class connect extends Thread {
         @Override
         public void run() {
@@ -125,8 +126,9 @@ public class main_board4 extends AppCompatActivity {
                                 intent.putExtra("title", titleList.get(position));
                                 intent.putExtra("date", dateList.get(position));
                                 intent.putExtra("content", contentList.get(position));
+                                intent.putExtra("category", "일상 정보");
                                 startActivity(intent);
-
+                                finish();
                             }
                         });
                     }
@@ -136,5 +138,11 @@ public class main_board4 extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(main_board4.this, main_board.class);
+        startActivity(intent);
     }
 }

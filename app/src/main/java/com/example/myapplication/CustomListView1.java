@@ -50,7 +50,6 @@ public class CustomListView1 extends BaseAdapter {
         TextView title = convertView.findViewById(R.id.title);
         TextView body_1 = convertView.findViewById(R.id.body_1);
         TextView body_2 = convertView.findViewById(R.id.body_2);
-        TextView body_3 = convertView.findViewById(R.id.body_3);
 
         mainImage.setImageResource(listViewData.get(position).mainImage);
 
@@ -58,7 +57,6 @@ public class CustomListView1 extends BaseAdapter {
         title.setText(listViewData.get(position).title);
         body_1.setText(listViewData.get(position).body_1);
         body_2.setText(listViewData.get(position).body_2);
-        body_3.setText(listViewData.get(position).body_3);
 
         return convertView;
     }

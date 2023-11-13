@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/know"
+        android:title="육아 정보"/>
+
+    <item android:id="@+id/free"
+        android:title="일상 정보"/>
+
+    <item android:id="@+id/study"
+        android:title="교육 정보"/>
+
+    <item android:id="@+id/support"
+        android:title="지원 정보"/>
+
+</menu>

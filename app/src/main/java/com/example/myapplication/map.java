@@ -83,9 +83,9 @@ public class map extends AppCompatActivity implements OnMapReadyCallback, Activi
     private LocationRequest locationRequest; // 주의
     private Location location;
     private View mLayout; // snackbar 사용하기 위함.
-    String gender;
-    LocalDate now;
-    int age;
+    String gender = null;
+    LocalDate now = null;
+    int age = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -204,8 +204,14 @@ public class map extends AppCompatActivity implements OnMapReadyCallback, Activi
 
         for (int idx = 0; idx < location_xList.size(); idx++) {
             LatLng latLng = new LatLng(location_xList.get(idx), location_yList.get(idx));
-
-
+            if(genderList.get(idx)) {
+                gender = "남자";
+            } else{
+                gender = "여자";
+            }
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                age = now.getYear() - Integer.parseInt(dateList.get(idx).substring(0,4));
+            }
             // 1. 마커 옵션 설정 (만드는 과정)
             MarkerOptions makerOptions = new MarkerOptions();
             makerOptions.position(latLng);
@@ -236,7 +242,7 @@ public class map extends AppCompatActivity implements OnMapReadyCallback, Activi
             }
             Intent intent = new Intent(getApplicationContext(), main_help_info.class);
             intent.putExtra("이름", nameList.get(i));
-            intent.putExtra("나이", age);
+            intent.putExtra("나이", Integer.toString(age));
             intent.putExtra("성별", gender);
             intent.putExtra("주소", addressList.get(i));
             intent.putExtra("전화번호", phoneList.get(i));

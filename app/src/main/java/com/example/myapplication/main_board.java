@@ -46,21 +46,25 @@ public class main_board extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), main_board1.class);
                         intent.putExtra("닉네임",nickname);
                         startActivity(intent);
+                        finish();
                         break;
                     case R.id.study:
                         intent = new Intent(getApplicationContext(), main_board2.class);
                         intent.putExtra("닉네임",nickname);
                         startActivity(intent);
+                        finish();
                         break;
                     case R.id.support:
                         intent = new Intent(getApplicationContext(), main_board3.class);
                         intent.putExtra("닉네임",nickname);
                         startActivity(intent);
+                        finish();
                         break;
                     case R.id.know:
                         intent = new Intent(getApplicationContext(), main_board4.class);
                         intent.putExtra("닉네임",nickname);
                         startActivity(intent);
+                        finish();
                         break;
 
                 }
@@ -72,6 +76,7 @@ public class main_board extends AppCompatActivity {
         support.setOnClickListener(cl);
         know.setOnClickListener(cl);
     }
+
 
     class connect extends Thread {
         @Override
@@ -103,5 +108,10 @@ public class main_board extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

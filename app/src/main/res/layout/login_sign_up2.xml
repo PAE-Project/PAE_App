@@ -25,6 +25,7 @@
         android:layout_marginLeft="33.75dp"
         android:layout_alignParentTop="true"
         android:text="PAE"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/test"
         android:textAppearance="@style/pae"
         android:gravity="top"

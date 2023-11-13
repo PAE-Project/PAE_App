@@ -35,7 +35,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="7dp"
         android:gravity="top"
-        android:text="나눔 정보"
+        android:text="내 나눔 정보"
         android:textAppearance="@style/some_id"
         android:textColor="#B3000000"
         android:textSize="28.75sp" />
@@ -65,107 +65,30 @@
                 android:textColor="#000000" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="38.75dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="112.5dp"
-                android:textAppearance="@style/some_id"
-                android:gravity="top"
-                android:text="카테고리"
-                android:textSize="15sp"
-                android:textColor="#000000" />
-
-            <TextView
                 android:id="@+id/category_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="22dp"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="110dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="112.5dp"
-                android:textAppearance="@style/some_id"
-                android:gravity="top"
-                android:text="카테고리"
-                android:textSize="15sp"
-                android:textColor="#B3A0A0A0" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_alignParentLeft="true"
                 android:layout_marginLeft="38.75dp"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="140dp"
+                android:layout_marginTop="112.5dp"
                 android:textAppearance="@style/some_id"
                 android:gravity="top"
-                android:text="상태"
-                android:textSize="15sp"
-                android:textColor="#000000" />
-
-            <TextView
-                android:id="@+id/state_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="110dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="140dp"
-                android:textAppearance="@style/some_id"
-                android:gravity="top"
-                android:text="상태"
+                android:text="작성일"
                 android:textSize="15sp"
                 android:textColor="#B3A0A0A0" />
 
             <TextView
+                android:id="@+id/date_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="22dp"
                 android:layout_alignParentLeft="true"
-                android:layout_marginLeft="220dp"
+                android:layout_marginLeft="237.5dp"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="112.5dp"
                 android:textSize="15sp"
                 android:gravity="top"
-                android:text="닉네임"
-                android:textColor="#000000" />
-
-            <TextView
-                android:id="@+id/nickname_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="291.25dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="112.5dp"
-                android:textSize="15sp"
-                android:gravity="top"
-                android:text="닉네임"
-                android:textColor="#B3A0A0A0" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="220dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="140dp"
-                android:textSize="15sp"
-                android:gravity="top"
-                android:text="가격"
-                android:textColor="#000000" />
-
-            <TextView
-                android:id="@+id/price_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="291.25dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="140dp"
-                android:textSize="15sp"
-                android:gravity="top"
-                android:text="가격"
+                android:text="날짜"
                 android:textColor="#B3A0A0A0" />
 
             <TextView
@@ -176,7 +99,7 @@
                 android:layout_marginLeft="37.5dp"
                 android:layout_marginRight="37.5dp"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="170dp"
+                android:layout_marginTop="150dp"
                 android:padding="10dp"
                 android:background="@drawable/rectangle_4"
                 android:textSize="15sp"
@@ -184,13 +107,40 @@
                 android:textColor="#B3A0A0A0" />
 
             <ImageView
-                android:id="@+id/img"
+                android:id="@+id/imageView3"
                 android:layout_width="match_parent"
                 android:layout_height="190dp"
                 android:layout_marginLeft="37.5dp"
                 android:layout_marginRight="37.5dp"
-                android:layout_marginTop="400dp"
+                android:layout_marginTop="380dp"
                 app:srcCompat="@drawable/ic_launcher_background" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="37.5dp"
+                android:layout_marginBottom="37.5dp"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/vector"
+                android:elevation="2.5dp"
+                android:textSize="22.5sp"
+                android:textColor="#FFFFFF"
+                android:text="수 정" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="37.5dp"
+                android:layout_marginBottom="37.5dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/vector"
+                android:elevation="2.5dp"
+                android:textSize="22.5sp"
+                android:textColor="#FFFFFF"
+                android:text="삭 제" />
 
 
         </RelativeLayout>

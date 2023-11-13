@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -32,36 +33,28 @@ public class main_board1 extends AppCompatActivity {
     ArrayList<String> nicknameList = new ArrayList<>();
 
     @Override
-    protected void onPostResume() {
-        super.onPostResume();
-    }
-
-    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_board1);
-
-
-
-        go_register = (Button) findViewById(R.id.go_register);
         Intent intent = getIntent();
         nickname = intent.getStringExtra("닉네임");
-
+        go_register = (Button) findViewById(R.id.go_register);
         listView = findViewById(R.id.listView);
+
 
         connect con = new connect();
         con.start();
-
         cl = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.go_register:
+
                         Intent intent = new Intent(getApplicationContext(), RegisterActivity_board.class);
                         intent.putExtra("닉네임",nickname);
                         intent.putExtra("카테고리", "육아 정보");
                         startActivity(intent);
-
+                        finish();
                         break;
 
                 }
@@ -96,8 +89,7 @@ public class main_board1 extends AppCompatActivity {
 
                 final String data = result.toString();
                 JSONArray jsonArray = new JSONArray(data);
-                final ArrayList<ListData> listViewData = new ArrayList<>();
-
+                ArrayList<ListData> listViewData = new ArrayList<>();
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     if(jsonObject.getString("category").equals("육아 정보")){
@@ -132,7 +124,9 @@ public class main_board1 extends AppCompatActivity {
                                 intent.putExtra("title", titleList.get(position));
                                 intent.putExtra("date", dateList.get(position));
                                 intent.putExtra("content", contentList.get(position));
+                                intent.putExtra("category", "육아 정보");
                                 startActivity(intent);
+                                finish();
                             }
                         });
                     }
@@ -143,5 +137,9 @@ public class main_board1 extends AppCompatActivity {
             }
         }
     }
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

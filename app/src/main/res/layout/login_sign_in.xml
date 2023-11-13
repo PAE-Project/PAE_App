@@ -67,6 +67,7 @@
             android:hint="test@test.com"
             android:textColor="#000000"
             android:textColorHint="#C0C0C0"
+            android:textSize="15sp"
             tools:layout_editor_absoluteY="109dp" />
 
         <TextView
@@ -98,6 +99,7 @@
             android:paddingLeft="16dp"
             android:password="true"
             android:textColor="#000000"
+            android:textSize="15sp"
             android:textColorHint="#C0C0C0"
             tools:layout_editor_absoluteX="42dp"
             tools:layout_editor_absoluteY="330dp" />
@@ -106,7 +108,7 @@
             android:id="@+id/SignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="278dp"
+            android:layout_marginTop="260dp"
             android:layout_marginEnd="20dp"
             android:layout_toStartOf="@id/femail"
             android:gravity="center_horizontal|center_vertical"
@@ -120,7 +122,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="278dp"
+            android:layout_marginTop="260dp"
             android:gravity="center_horizontal|center_vertical"
             android:lineSpacingExtra="29sp"
             android:text="이메일 찾기"
@@ -132,7 +134,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="278dp"
+            android:layout_marginTop="260dp"
             android:layout_toEndOf="@id/femail"
             android:gravity="center_horizontal|center_vertical"
             android:lineSpacingExtra="29sp"
@@ -144,12 +146,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/vector"
             android:elevation="2.5dp"
             android:layout_below="@id/femail"
             android:gravity="center_horizontal|center_vertical"
-            android:text="로그인"
-            android:textAppearance="@style/some_id2" />
+            android:text="로그인" />
 
     </RelativeLayout>
 

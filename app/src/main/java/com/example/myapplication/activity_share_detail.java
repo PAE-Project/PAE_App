@@ -1,6 +1,10 @@
 package com.example.myapplication;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -14,6 +18,9 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.Abs
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class activity_share_detail extends AppCompatActivity {
     TextView title_tv, content_tv, price_tv, category_tv, state_tv, nickname_tv;
@@ -37,6 +44,7 @@ public class activity_share_detail extends AppCompatActivity {
         category_tv = (TextView) findViewById(R.id.category_tv);
         nickname_tv = (TextView) findViewById(R.id.nickname_tv);
         content_tv = (TextView) findViewById(R.id.content_tv);
+        state_tv = (TextView) findViewById(R.id.state_tv);
         img = (ImageView) findViewById(R.id.img);
 
         img.setImageResource(R.drawable.logo);
@@ -52,7 +60,7 @@ public class activity_share_detail extends AppCompatActivity {
         category_tv.setText(category);
         content_tv.setText(state);
         nickname_tv.setText(nickname);
-//        date_tv.setText(date);
+        state_tv.setText(state);
 
     }
 }

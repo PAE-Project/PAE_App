@@ -17,8 +17,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTube
 import org.jetbrains.annotations.NotNull;
 
 public class activity_info_detail extends AppCompatActivity {
-    TextView title_tv, content_tv, date_tv;
-    ImageView img;
+    TextView title_tv, content_tv;
     private LinearLayout recipeViewLinearLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +34,7 @@ public class activity_info_detail extends AppCompatActivity {
 
         title_tv = (TextView) findViewById(R.id.title_tv);
         content_tv = (TextView) findViewById(R.id.content_tv);
-        date_tv = (TextView) findViewById(R.id.date_tv);
-        img = (ImageView) findViewById(R.id.img);
-
-        img.setImageResource(R.drawable.logo);
-        final String url = "IEo-nmSYFhI";
+        final String url = "_e5evpygDz8";
 
 
         title_tv.setText(title);

@@ -38,7 +38,7 @@ public class main_consult2 extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_consult1);
+        setContentView(R.layout.main_consult2);
 
         listView = findViewById(R.id.listView);
 
@@ -113,7 +113,7 @@ public class main_consult2 extends AppCompatActivity {
                         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                Intent intent = new Intent(main_consult2.this, activity_board_detail.class);
+                                Intent intent = new Intent(main_consult2.this, activity_consult_detail.class);
                                 intent.putExtra("title", titleList.get(position));
                                 intent.putExtra("date", dateList.get(position));
                                 intent.putExtra("content", contentList.get(position));

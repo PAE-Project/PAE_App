@@ -40,6 +40,7 @@
                 android:fontFamily="@font/test"
                 android:textAppearance="@style/pae"
                 android:gravity="top"
+                android:layout_marginTop="5dp"
                 />
 
             <TextView

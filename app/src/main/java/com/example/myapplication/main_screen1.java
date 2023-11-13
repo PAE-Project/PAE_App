@@ -98,10 +98,12 @@ public class main_screen1 extends AppCompatActivity {
                         break;
                     case R.id.change_info:
                         intent = new Intent(getApplicationContext(), main_update_my_info.class);
+                        intent.putExtra("이메일", email);
                         startActivity(intent);
+                        finish();
                         break;
                     case R.id.go_0001:
-                        intent = new Intent(getApplicationContext(), login_start.class);
+                        intent = new Intent(getApplicationContext(), login_sign_in.class);
                         startActivity(intent);
                         break;
                 }

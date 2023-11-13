@@ -41,7 +41,7 @@ public class main_info2 extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_consult1);
+        setContentView(R.layout.main_info2);
 
         listView = findViewById(R.id.listView);
 

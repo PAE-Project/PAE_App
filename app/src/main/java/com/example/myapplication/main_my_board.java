@@ -31,26 +31,22 @@ public class main_my_board extends AppCompatActivity {
     ArrayList<String> contentList = new ArrayList<>();
     ArrayList<String> dateList = new ArrayList<>();
     ArrayList<String> nicknameList = new ArrayList<>();
+    ArrayList<String> categoryList = new ArrayList<>();
+    ArrayList<Long> idList = new ArrayList<>();
 
-    @Override
-    protected void onPostResume() {
-        super.onPostResume();
-    }
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_my_board);
-
-
         listView = findViewById(R.id.listView);
         Intent secondIntent = getIntent();
-        email_data = secondIntent.getStringExtra("이메일");
         nickname = secondIntent.getStringExtra("닉네임");
-
+        email_data = secondIntent.getStringExtra("이메일");
+        System.out.println(nickname);
         connect con = new connect();
         con.start();
-
     }
 
 
@@ -79,14 +75,17 @@ public class main_my_board extends AppCompatActivity {
                 final String data = result.toString();
                 JSONArray jsonArray = new JSONArray(data);
                 final ArrayList<ListData> listViewData = new ArrayList<>();
-
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
+
                     if(jsonObject.getString("nickname").equals(nickname)){
+                        idList.add(jsonObject.getLong("id"));
                         titleList.add(jsonObject.getString("title"));
                         contentList.add(jsonObject.getString("content"));
                         dateList.add(jsonObject.getString("date"));
                         nicknameList.add(jsonObject.getString("nickname"));
+                        categoryList.add(jsonObject.getString("category"));
+
                     }
                 }
 
@@ -110,11 +109,15 @@ public class main_my_board extends AppCompatActivity {
                         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                Intent intent = new Intent(main_my_board.this, activity_board_detail.class);
+                                Intent intent = new Intent(main_my_board.this, activity_board_detail_correct.class);
+                                intent.putExtra("num", idList.get(position).toString());
                                 intent.putExtra("title", titleList.get(position));
                                 intent.putExtra("date", dateList.get(position));
                                 intent.putExtra("content", contentList.get(position));
+                                intent.putExtra("category", categoryList.get(position));
+                                intent.putExtra("nickname", nicknameList.get(position));
                                 startActivity(intent);
+                                finish();
                             }
                         });
                     }
@@ -125,5 +128,14 @@ public class main_my_board extends AppCompatActivity {
             }
         }
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(main_my_board.this, main_screen1.class);
+        intent.putExtra("이메일", email_data);
+        startActivity(intent);
+        finish();
+    }
+
 
 }

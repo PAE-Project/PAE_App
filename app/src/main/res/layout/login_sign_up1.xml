@@ -31,6 +31,7 @@
             android:layout_alignParentTop="true"
             android:fontFamily="@font/test"
             android:text="PAE"
+            android:layout_marginTop="5dp"
             android:textAppearance="@style/pae"
             android:gravity="top"
             />

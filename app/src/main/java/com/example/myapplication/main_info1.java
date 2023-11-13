@@ -41,7 +41,7 @@ public class main_info1 extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_consult1);
+        setContentView(R.layout.main_info1);
 
         listView = findViewById(R.id.listView);
 
@@ -90,6 +90,7 @@ public class main_info1 extends AppCompatActivity {
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     if(jsonObject.getString("category").equals("support")){
+                        System.out.println(jsonObject);
                         titleList.add(jsonObject.getString("title"));
                         contentList.add(jsonObject.getString("content"));
                         categoryList.add(jsonObject.getString("category"));
@@ -104,8 +105,6 @@ public class main_info1 extends AppCompatActivity {
                     listData.num = String.valueOf(i + 1);
                     listData.mainImage = R.drawable.ic_launcher_foreground;
                     listData.title = titleList.get(i);
-
-                    listData.body_1 = "작성일 : "/* + dateList.get(i)*/;
                     listViewData.add(listData);
                 }
 

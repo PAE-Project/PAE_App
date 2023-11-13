@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -18,6 +19,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class main_board2 extends AppCompatActivity {
@@ -26,35 +28,32 @@ public class main_board2 extends AppCompatActivity {
     View.OnClickListener cl;
     String nickname;
     ArrayList<String> titleList = new ArrayList<>();
-    ArrayList<String> categoryList = new ArrayList<>();
     ArrayList<String> contentList = new ArrayList<>();
     ArrayList<String> dateList = new ArrayList<>();
     ArrayList<String> nicknameList = new ArrayList<>();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_board2);
-
-        go_register = (Button) findViewById(R.id.go_register);
-        listView = findViewById(R.id.listView);
-
         Intent intent = getIntent();
         nickname = intent.getStringExtra("닉네임");
-
+        go_register = (Button) findViewById(R.id.go_register);
         listView = findViewById(R.id.listView);
 
         connect con = new connect();
         con.start();
-
         cl = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.go_register:
+
                         Intent intent = new Intent(getApplicationContext(), RegisterActivity_board.class);
                         intent.putExtra("닉네임",nickname);
                         intent.putExtra("카테고리", "교육 정보");
                         startActivity(intent);
+                        finish();
                         break;
 
                 }
@@ -64,6 +63,8 @@ public class main_board2 extends AppCompatActivity {
         go_register.setOnClickListener(cl);
 
     }
+
+
     class connect extends Thread {
         @Override
         public void run() {
@@ -88,8 +89,7 @@ public class main_board2 extends AppCompatActivity {
 
                 final String data = result.toString();
                 JSONArray jsonArray = new JSONArray(data);
-                final ArrayList<ListData> listViewData = new ArrayList<>();
-
+                ArrayList<ListData> listViewData = new ArrayList<>();
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     if(jsonObject.getString("category").equals("교육 정보")){
@@ -124,8 +124,9 @@ public class main_board2 extends AppCompatActivity {
                                 intent.putExtra("title", titleList.get(position));
                                 intent.putExtra("date", dateList.get(position));
                                 intent.putExtra("content", contentList.get(position));
+                                intent.putExtra("category", "교육 정보");
                                 startActivity(intent);
-
+                                finish();
                             }
                         });
                     }
@@ -135,5 +136,12 @@ public class main_board2 extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(main_board2.this, main_board.class);
+        startActivity(intent);
+        finish();
     }
 }

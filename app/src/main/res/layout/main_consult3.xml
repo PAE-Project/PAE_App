@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,24 +7,50 @@
     android:orientation="vertical"
     android:background="#FFFFFF">
 
-    <TextView
-        android:id="@+id/textView"
+    <View
+        android:id="@+id/rectangle_3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_height="55dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#99FFC600"
+        />
+
+    <TextView
+        android:id="@+id/pae"
+        android:layout_width="wrap_content"
+        android:layout_height="46.25dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="33.75dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:text="PAE"
+        android:textAppearance="@style/pae"
+        android:fontFamily="@font/test"
+        android:gravity="top"
+        />
+
+    <TextView
+        android:id="@+id/some_id"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="7dp"
         android:text="상담원"
-        android:layout_marginTop="20dp"
-        android:textColor="#000000"
-        android:textSize="30dp"
-        android:textStyle="bold" />
+        android:textAppearance="@style/some_id"
+        android:gravity="top"
+        android:textSize="28.75sp"
+        android:textColor="#B3000000"
+        />
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="62.5dp"
         android:layout_marginBottom="20dp"
         android:layout_weight="1"
         android:dividerHeight="4dp" />
 
-</LinearLayout>
+</RelativeLayout>

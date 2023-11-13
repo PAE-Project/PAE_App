@@ -3,6 +3,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -35,6 +36,7 @@ public class login_search_email extends AppCompatActivity {
         go_login = (Button) findViewById(R.id.go_login);
         check = (Button) findViewById(R.id.check);
         phoneNum = (EditText) findViewById(R.id.phone);
+        phoneNum.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
 
 
         cl = new View.OnClickListener() {

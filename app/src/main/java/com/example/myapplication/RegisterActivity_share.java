@@ -4,12 +4,14 @@ import static java.lang.System.out;
 
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapRegionDecoder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
@@ -54,7 +56,7 @@ public class RegisterActivity_share extends AppCompatActivity {
     TextView date_tv, nickname_tv, state_tv, category_tv, address_tv;
     EditText title_et, content_et, price_et;
     Button reg_button, btn_UploadPicture;
-    String imgString;
+    byte[] imgByte;
     View.OnClickListener cl;
     private OkHttpClient client = new OkHttpClient();
     private MediaType JSON = MediaType.parse("application/json; charset=utf-8");
@@ -78,8 +80,8 @@ public class RegisterActivity_share extends AppCompatActivity {
         category_tv = (TextView) findViewById(R.id.category_tv);
         address_tv = (TextView) findViewById(R.id.address_tv);
 
-        state_tv.setText("길게눌러상태설정");
-        category_tv.setText("길게눌러상태설정");
+        state_tv.setText("설정");
+        category_tv.setText("설정");
 
         Intent secondIntent = getIntent();
         String nickname = secondIntent.getStringExtra("닉네임");
@@ -122,7 +124,6 @@ public class RegisterActivity_share extends AppCompatActivity {
                                 state_tv.setText("나눔 완료");
                                 break;
                         }
-
                         return false;
                     }
                 });
@@ -152,7 +153,6 @@ public class RegisterActivity_share extends AppCompatActivity {
                             case R.id.things:
                                 category_tv.setText("용품");
                                 break;
-
                         }
 
                         return false;
@@ -190,6 +190,8 @@ public class RegisterActivity_share extends AppCompatActivity {
                             sharedata.put("date", date_now);
                             sharedata.put("state",state_tv.getText().toString());
                             sharedata.put("img", "test");
+                            sharedata.put("img2", "test");
+                            sharedata.put("img3", "test");
                             sharedata.put("address",address);
                             sharedata.put("nickname", nickname);
                             sharedata.put("price", Integer.parseInt(price_et.getText().toString()));
@@ -260,9 +262,6 @@ public class RegisterActivity_share extends AppCompatActivity {
                     InputStream instream = resolver.openInputStream(fileUri);
                     Bitmap imgBitmap = BitmapFactory.decodeStream(instream);
                     imageView.setImageBitmap(imgBitmap);    // 선택한 이미지 이미지뷰에 셋
-                    imgString = BitmapToString(imgBitmap);
-                    System.out.println(imgString.length());
-
                     instream.close();   // 스트림 닫아주기
                     Toast.makeText(getApplicationContext(), "파일 불러오기 성공", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
@@ -272,12 +271,15 @@ public class RegisterActivity_share extends AppCompatActivity {
         }
     }
 
-    public static String BitmapToString(Bitmap bitmap) {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 10, baos);
-        byte[] bytes = baos.toByteArray();
-        String temp = Base64.encodeToString(bytes, Base64.DEFAULT);
-        return temp;
+    public String getRealpath(Uri uri) {
+        String[] proj = {MediaStore.Images.Media.DATA};
+        Cursor c = getContentResolver().query(uri, proj, null, null, null);
+        int index = c.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+
+        c.moveToFirst();
+        String path = c.getString(index);
+
+        return path;
     }
 
 }

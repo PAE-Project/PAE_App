@@ -50,6 +50,7 @@ public class RegisterActivity_board extends AppCompatActivity {
         String nickname = secondIntent.getStringExtra("닉네임");
         String category = secondIntent.getStringExtra("카테고리");
 
+        System.out.println(nickname);
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             date_now = LocalDate.now();
@@ -71,6 +72,7 @@ public class RegisterActivity_board extends AppCompatActivity {
                             userdata.put("nickname", nickname);
                             userdata.put("created_at", date_now);
                             userdata.put("updated_at", date_now);
+                            System.out.println(userdata);
 
                         } catch (JSONException e) {
                             throw new RuntimeException(e);
@@ -111,26 +113,35 @@ public class RegisterActivity_board extends AppCompatActivity {
                         Toast toast = Toast.makeText(getApplicationContext(), "작성완료",Toast.LENGTH_SHORT);
                         toast.show();
                         if(category.equals("육아 정보")){
-                            Intent intent = new Intent(getApplicationContext(), main_board1.class);
+                            Intent intent = new Intent(RegisterActivity_board.this, main_board1.class);
+                            intent.putExtra("닉네임",nickname);
                             startActivity(intent);
+                            finish();
+                            break;
                         }
-                        else if(category.equals("교육 정보")){
+                        if(category.equals("교육 정보")){
                             Intent intent = new Intent(getApplicationContext(), main_board2.class);
+                            intent.putExtra("닉네임",nickname);
                             startActivity(intent);
-                        }else if(category.equals("지원 정보")){
-                            Intent intent = new Intent(getApplicationContext(), main_board3.class);
-                            startActivity(intent);
-                        }else if(category.equals("일상 정보")){
-                            Intent intent = new Intent(getApplicationContext(), main_board4.class);
-                            startActivity(intent);
+                            finish();
+                            break;
                         }
-
-
-
-                        break;
+                        if(category.equals("지원 정보")){
+                            Intent intent = new Intent(getApplicationContext(), main_board3.class);
+                            intent.putExtra("닉네임",nickname);
+                            startActivity(intent);
+                            finish();
+                            break;
+                        }
+                        if(category.equals("일상 정보")){
+                            Intent intent = new Intent(getApplicationContext(), main_board4.class);
+                            intent.putExtra("닉네임",nickname);
+                            startActivity(intent);
+                            finish();
+                            break;
+                        }
 
                 }
-
             }
         };
         reg.setOnClickListener(cl);

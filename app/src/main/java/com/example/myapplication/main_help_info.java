@@ -30,7 +30,7 @@ public class main_help_info extends AppCompatActivity {
         tel = (TextView) findViewById(R.id.tel);
         ad = (TextView) findViewById(R.id.ad);
         info = (TextView) findViewById(R.id.info);
-
+        System.out.println(age);
         helper.setText(name);
         tel.setText(phone);
         ad.setText(address);
@@ -41,10 +41,7 @@ public class main_help_info extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()){
                     case R.id.success:
-                        Toast toast = Toast.makeText(getApplicationContext(), "신청완료.", Toast.LENGTH_SHORT);
-                        toast.show();
-                        Intent intent = new Intent(getApplicationContext(), map_help_list.class);
-                        startActivity(intent);
+                        finish();
                         break;
 
                 }
