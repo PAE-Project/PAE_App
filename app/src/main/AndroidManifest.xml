@@ -29,7 +29,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCuc4UJZRHHYyGoThKwE_8dw4Jv9W2ns3A" />
+            android:value="${MAPS_API_KEY}" />
         <activity
             android:name=".splash_00"
             android:theme="@style/SplashTheme"
